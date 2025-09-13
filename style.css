@@ -54,25 +54,31 @@ nav ul li a:hover {
     font-size: 20px;
 }
 
-body h2{
-
-padding-bottom: 200px;
-background-color: blue;
-
+section {
+  padding: 100px 0;   /* espaço entre as seções */
 }
 
-#Motores {
+h2 {
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 10px 0;    /* faixa só atrás do texto */
+}
+
+/* cores individuais */
+#Motores h2 {
   background-color: darkred;
 }
 
-#Pneus {
+#Pneus h2 {
   background-color: darkgreen;
 }
 
-#Autopeças {
+#Autopeças h2 {
   background-color: navy;
 }
 
-#AmortecedoreseSuspensões {
+#AmortecedoreseSuspensões h2 {
   background-color: purple;
 }
+
