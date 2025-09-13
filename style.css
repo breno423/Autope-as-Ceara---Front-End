@@ -1,84 +1,121 @@
+/* =================================
+   1. ESTILOS GERAIS E RESET
+   ================================= */
+
+/* Reset universal para remover margens e preenchimentos padrão do navegador. 
+   Isso garante que o layout seja mais consistente entre diferentes browsers. */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Faz com que padding e border não aumentem a largura total do elemento */
 }
-header h1 .titulo {
-text-align:center;
+
+/* Estilos base para todo o corpo do documento */
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    line-height: 1.6; /* Melhora a legibilidade do texto */
 }
+
+
+/* =================================
+   2. CABEÇALHO (HEADER)
+   ================================= */
+
 header {
     background-color: saddlebrown;
     padding: 10px 0;
+    color: white;
 }
 
+/* Container flexível para alinhar os itens do cabeçalho.
+   - display: flex -> Ativa o layout flexível.
+   - justify-content: space-between -> Distribui os itens: o primeiro na esquerda, o último na direita e o restante no meio.
+   - align-items: center -> Alinha os itens verticalmente ao centro.
+*/
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    max-width: 1200px; /* Largura máxima para o conteúdo do header */
+    margin: 0 auto;    /* Centraliza o container na página */
+    padding: 0 20px;   /* Adiciona um respiro nas laterais em telas menores */
+}
+
+/* Elemento 'fantasma' usado para empurrar o título H1.
+   Como o logo tem uma largura, este placeholder com a mesma largura do logo
+   garante que o H1 fique perfeitamente centralizado no espaço disponível. */
+.header-placeholder {
+    width: 100px; /* Idealmente, a mesma largura do logo */
+    height: 100px;
 }
 
 header h1 {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-align: left;
-    color: white;
+    text-align: center;
+    /* O H1 ocupará o espaço central graças ao space-between e ao placeholder */
 }
 
 .logo {
     height: 100px;
-    width: auto;
-    object-fit: contain;
+    width: 100px; /* Definir uma largura fixa ajuda a alinhar com o placeholder */
+    object-fit: contain; /* Garante que a imagem não seja distorcida */
 }
 
+
+/* =================================
+   3. NAVEGAÇÃO (NAV)
+   ================================= */
+
+nav {
+    padding-top: 10px; /* Adiciona um pequeno espaço entre o título e a navegação */
+}
+
+/* Transforma a lista de links em um menu horizontal e centralizado */
 nav ul {
     display: flex;
-    list-style: none;
-    gap: 20px;
     justify-content: center;
-    padding: 0;
-    margin: 0;
+    list-style: none; /* Remove os marcadores (bolinhas) da lista */
+    gap: 25px; /* Espaçamento entre os itens do menu */
 }
 
 nav ul li a {
-    text-decoration: none;
+    text-decoration: none; /* Remove o sublinhado dos links */
     color: white;
     font-weight: bold;
-    transition: 0.3s;
+    padding: 5px 10px; /* Adiciona uma área de clique maior */
+    border-radius: 5px; /* Bordas levemente arredondadas */
+    transition: all 0.3s ease; /* Transição suave para todas as propriedades */
 }
 
+/* Efeito visual quando o mouse passa sobre um link */
 nav ul li a:hover {
     color: yellow;
-    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.2); /* Fundo sutil para destacar */
+    transform: scale(1.1); /* Efeito de zoom suave, melhor que mudar o font-size */
 }
+
+
+/* =================================
+   4. SEÇÕES DE CONTEÚDO (SECTION)
+   ================================= */
 
 section {
-  padding: 100px 0;   /* espaço entre as seções */
+    padding: 80px 0px; /* Espaço vertical entre as seções e um respiro lateral */
 }
 
-h2 {
-  color: white;
-  text-align: center;
-  margin: 0;
-  padding: 10px 0;    /* faixa só atrás do texto */
+/* Estilo base para todos os títulos de seção */
+section h2 {
+    color: white;
+    text-align: left;
+    padding: 15px 20px; /* Aumenta a altura da faixa colorida */
+    max-width: 200px;  /* Alinha a faixa com o conteúdo do header */    /* Centraliza a faixa na página */
 }
 
-/* cores individuais */
-#Motores h2 {
-  background-color: darkred;
-}
-
-#Pneus h2 {
-  background-color: darkgreen;
-}
-
-#Autopeças h2 {
-  background-color: navy;
-}
-
+/* Regra ÚNICA para a cor de fundo dos títulos.
+   Agrupamos todos os seletores que compartilham o mesmo estilo
+   para evitar repetição de código (Princípio DRY - Don't Repeat Yourself). */
+#Motores h2,
+#Pneus h2,
+#Autopeças h2,
 #AmortecedoreseSuspensões h2 {
-  background-color: purple;
+    background-color: darkred;
 }
-
