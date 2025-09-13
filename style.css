@@ -35,7 +35,8 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: yellow; /* cor ao passar o mouse */
+    color: yellow;
+    font-size: 30px;
 }
 
 }
