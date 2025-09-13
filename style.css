@@ -1,35 +1,50 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
+}
+header h1 .titulo {
+text-align:center;
+}
 header {
     background-color: saddlebrown;
-    height: 75px;
-    display: flex;
-    flex-direction: column; /* coloca h1 em cima e menu embaixo */
-    justify-content: center; /* centraliza no eixo vertical */
-    align-items: center;     /* centraliza no eixo horizontal */
-    gap: 10px; /* espaço entre o título e o menu */
+    padding: 10px 0;
 }
-header h1{
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-align: center;
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header h1 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: left;
+    color: white;
+}
+
+.logo {
+    height: 100px;
+    width: auto;
+    object-fit: contain;
 }
 
 nav ul {
     display: flex;
     list-style: none;
     gap: 20px;
-    justify-content: center; /* centraliza no header */
+    justify-content: center;
     padding: 0;
     margin: 0;
 }
 
-
 nav ul li a {
-    text-decoration: none; /* tira sublinhado */
-    color: white;          /* texto branco */
+    text-decoration: none;
+    color: white;
     font-weight: bold;
     transition: 0.3s;
 }
@@ -60,6 +75,4 @@ background-color: blue;
 
 #AmortecedoreseSuspensões {
   background-color: purple;
-}
-
 }
