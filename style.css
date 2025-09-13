@@ -36,7 +36,30 @@ nav ul li a {
 
 nav ul li a:hover {
     color: yellow;
-    font-size: 30px;
+    font-size: 20px;
+}
+
+body h2{
+
+padding-bottom: 200px;
+background-color: blue;
+
+}
+
+#Motores {
+  background-color: darkred;
+}
+
+#Pneus {
+  background-color: darkgreen;
+}
+
+#Autopeças {
+  background-color: navy;
+}
+
+#AmortecedoreseSuspensões {
+  background-color: purple;
 }
 
 }
