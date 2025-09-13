@@ -1,88 +1,131 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoPeças Maia</title>
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
-    
+
     <header>
-    <div class="header-content">
-        <div class="header-placeholder"></div>  
-          <img src="logo - Editado.png" alt="Logo da AutoPeças Maia" class="logo">
-    <div class="search-box">
-         <input type="text" id="searchInput" class="search-input" placeholder="Buscar...">
-         <span class="search-icon">
-        <!-- Ícone SVG de lupa -->
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        </span>
-</div>
-    </div>
-    <nav>
-    <ul>
-        <li>
-            <a href="#Motores">Motores</a>
-            <ul class="submenu">
-                <li><a href="#">Motores a Gasolina</a></li>
-                <li><a href="#">Motores a Diesel</a></li>
-                <li><a href="#">Componentes</a></li>
+        <div class="header-content">
+            <div class="header-placeholder"></div>
+            <img src="logo - Editado.png" alt="Logo da AutoPeças Maia" class="logo">
+
+            <div class="search-box">
+                <input type="text" id="searchInput" class="search-input" placeholder="Buscar...">
+                <span class="search-icon">
+                    <!-- Ícone SVG de lupa -->
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </span>
+            </div>
+
+            <button class="login-btn" id="openModal">Login/Cadastro</button>
+        </div>
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="#Motores">Motores</a>
+                    <ul class="submenu">
+                        <li><a href="#">Motores a Gasolina</a></li>
+                        <li><a href="#">Motores a Diesel</a></li>
+                        <li><a href="#">Componentes</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#Pneus">Pneus</a></li>
+
+                <li>
+                    <a href="#Autopeças">Autopeças</a>
+                    <ul class="submenu">
+                        <li><a href="#">Freios</a></li>
+                        <li><a href="#">Filtros</a></li>
+                        <li><a href="#">Elétrica</a></li>
+                        <li><a href="#">Acessórios</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#AmortecedoreseSuspensões">Amortecedores e Suspensões</a></li>
             </ul>
-        </li>
-
-        <li><a href="#Pneus">Pneus</a></li>
-
-        <li>
-            <a href="#Autopeças">Autopeças</a>
-            <ul class="submenu">
-                <li><a href="#">Freios</a></li>
-                <li><a href="#">Filtros</a></li>
-                <li><a href="#">Elétrica</a></li>
-                <li><a href="#">Acessórios</a></li>
-            </ul>
-        </li>
-
-        <li><a href="#AmortecedoreseSuspensões">Amortecedores e Suspensões</a></li>
-    </ul>
-</nav>
+        </nav>
     </header>
 
     <main>
-    <section id="produtosEmDestaque">
-        <h2>Produtos em Destaque</h2>
-        <div class="product-list">
-            <div class="product-item">
-                <h3>Vela de Ignição Bosch</h3>
-                <p>Compatível com diversos modelos.</p>
-                <span>R$ 25,00</span>
+        <section id="produtosEmDestaque">
+            <h2>Produtos em Destaque</h2>
+            <div class="product-list">
+                <div class="product-item">
+                    <h3>Vela de Ignição Bosch</h3>
+                    <p>Compatível com diversos modelos.</p>
+                    <span>R$ 25,00</span>
+                </div>
+                <div class="product-item">
+                    <h3>Pneu Aro 15 Michelin</h3>
+                    <p>Alta durabilidade e performance.</p>
+                    <span>R$ 350,00</span>
+                </div>
+                <div class="product-item">
+                    <h3>Amortecedor Cofap</h3>
+                    <p>Para suspensão dianteira.</p>
+                    <span>R$ 180,00</span>
+                </div>
+                <div class="product-item">
+                    <h3>Filtro de Óleo Fram</h3>
+                    <p>Mantenha seu motor protegido.</p>
+                    <span>R$ 45,00</span>
+                </div>
+                <div class="product-item">
+                    <h3>Lâmpada H7 Philips</h3>
+                    <p>Maior visibilidade noturna.</p>
+                    <span>R$ 60,00</span>
+                </div>
             </div>
-            <div class="product-item">
-                <h3>Pneu Aro 15 Michelin</h3>
-                <p>Alta durabilidade e performance.</p>
-                <span>R$ 350,00</span>
+        </section>
+    </main>
+
+    <!-- Modal Login/Cadastro -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+
+            <div class="modal-tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="cadastro">Cadastro</button>
             </div>
-            <div class="product-item">
-                <h3>Amortecedor Cofap</h3>
-                <p>Para suspensão dianteira.</p>
-                <span>R$ 180,00</span>
+
+            <div class="tab-content active" id="login">
+                <form>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Senha" required>
+                    <button type="submit">Entrar</button>
+                </form>
             </div>
-            <div class="product-item">
-                <h3>Filtro de Óleo Fram</h3>
-                <p>Mantenha seu motor protegido.</p>
-                <span>R$ 45,00</span>
-            </div>
-            <div class="product-item">
-                <h3>Lâmpada H7 Philips</h3>
-                <p>Maior visibilidade noturna.</p>
-                <span>R$ 60,00</span>
+
+            <div class="tab-content" id="cadastro">
+                <form>
+                    <input type="text" placeholder="Nome" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Senha" required>
+                    <input type="tel" placeholder="Telefone" required>
+                    <input type="text" name="cpf" placeholder="Digite seu CPF" maxlength="14"
+                        pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato: 000.000.000-00" required>
+
+                    <button type="submit">Cadastrar</button>
+                </form>
             </div>
         </div>
-    </section>
-
-    <!-- Suas outras seções (Motores, Pneus, etc.) viriam aqui -->
-</main>
+    </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>
