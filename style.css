@@ -177,6 +177,7 @@ nav > ul > li:hover > .submenu {
 .submenu li a:hover {
     background-color: darkred;
     color: yellow;
+    font-size: 15px;
     /* Resetamos o transform aqui para não ter zoom dentro do dropdown */
     transform: none; 
 }
@@ -205,4 +206,39 @@ section h2 {
 #Autopeças h2,
 #AmortecedoreseSuspensões h2 {
     background-color: darkred;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.product-item {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.product-item h3 {
+    color: darkred;
+    margin-bottom: 10px;
+}
+
+.product-item p {
+    color: #555;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.product-item span {
+    font-weight: bold;
+    color: saddlebrown;
+    font-size: 1.1em;
 }

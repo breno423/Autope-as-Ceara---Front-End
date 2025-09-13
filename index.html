@@ -9,18 +9,18 @@
 <body>
     
     <header>
-        <div class="header-content">
-            <div class="header-placeholder"></div>  
-            <img src="logo - Editado.png" alt="Logo da AutoPeças Maia" class="logo">
-                            <div class="search-box">
-                                    <input type="text" class="search-input" placeholder="Buscar...">
-                                    <span class="search-icon">
-                                        <!-- Ícone SVG de lupa -->
-                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                                    </span>
-                            </div>
-        </div>
-       <nav>
+    <div class="header-content">
+        <div class="header-placeholder"></div>  
+          <img src="logo - Editado.png" alt="Logo da AutoPeças Maia" class="logo">
+    <div class="search-box">
+         <input type="text" id="searchInput" class="search-input" placeholder="Buscar...">
+         <span class="search-icon">
+        <!-- Ícone SVG de lupa -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </span>
+</div>
+    </div>
+    <nav>
     <ul>
         <li>
             <a href="#Motores">Motores</a>
@@ -49,22 +49,40 @@
     </header>
 
     <main>
-        <section id="Motores">
-            <h2>Motores</h2>
-            </section>
+    <section id="produtosEmDestaque">
+        <h2>Produtos em Destaque</h2>
+        <div class="product-list">
+            <div class="product-item">
+                <h3>Vela de Ignição Bosch</h3>
+                <p>Compatível com diversos modelos.</p>
+                <span>R$ 25,00</span>
+            </div>
+            <div class="product-item">
+                <h3>Pneu Aro 15 Michelin</h3>
+                <p>Alta durabilidade e performance.</p>
+                <span>R$ 350,00</span>
+            </div>
+            <div class="product-item">
+                <h3>Amortecedor Cofap</h3>
+                <p>Para suspensão dianteira.</p>
+                <span>R$ 180,00</span>
+            </div>
+            <div class="product-item">
+                <h3>Filtro de Óleo Fram</h3>
+                <p>Mantenha seu motor protegido.</p>
+                <span>R$ 45,00</span>
+            </div>
+            <div class="product-item">
+                <h3>Lâmpada H7 Philips</h3>
+                <p>Maior visibilidade noturna.</p>
+                <span>R$ 60,00</span>
+            </div>
+        </div>
+    </section>
 
-        <section id="Pneus">
-            <h2>Pneus</h2>
-            </section>
+    <!-- Suas outras seções (Motores, Pneus, etc.) viriam aqui -->
+</main>
 
-        <section id="Autopeças">
-            <h2>Autopeças</h2>
-            </section>
-
-        <section id="AmortecedoreseSuspensões">
-            <h2>Amortecedores e Suspensões</h2>
-            </section>
-    </main>
-
+    <script src="script.js"></script>
 </body>
 </html>
