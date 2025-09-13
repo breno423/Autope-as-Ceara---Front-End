@@ -65,34 +65,92 @@ header h1 {
    3. NAVEGAÇÃO (NAV)
    ================================= */
 
+/* =================================
+   3. NAVEGAÇÃO (NAV) - COM DROPDOWN
+   ================================= */
+
+/* --- ESTILOS QUE VOCÊ JÁ TINHA --- */
+/* =================================
+   3. NAVEGAÇÃO (NAV)
+   ================================= */
+
+/* =================================
+   3. NAVEGAÇÃO (NAV) - COM DROPDOWN
+   ================================= */
+
+/* --- ESTILOS QUE VOCÊ JÁ TINHA --- */
 nav {
-    padding-top: 10px; /* Adiciona um pequeno espaço entre o título e a navegação */
+    padding-top: 10px;
 }
 
-/* Transforma a lista de links em um menu horizontal e centralizado */
 nav ul {
     display: flex;
     justify-content: center;
-    list-style: none; /* Remove os marcadores (bolinhas) da lista */
-    gap: 25px; /* Espaçamento entre os itens do menu */
+    list-style: none;
+    gap: 25px;
 }
 
-nav ul li a {
-    text-decoration: none; /* Remove o sublinhado dos links */
+nav ul li a{
+    text-decoration: none !important; /* Adicione !important aqui se o sublinhado persistir */
+    color: white; /* Garante que a cor do texto seja branca nos links da nav */
+}
+
+/* --- NOVAS REGRAS PARA O DROPDOWN --- */
+
+/* 1. Prepara o item principal para ser a referência de posição.
+   Isso é CRUCIAL para o submenu aparecer logo abaixo dele. */
+nav > ul > li {
+    position: relative; /* O pai precisa ser relativo */
+}
+
+/* 2. Esconde e posiciona o submenu.
+   - position: absolute -> Posiciona o submenu em relação ao 'li' pai.
+   - display: none -> Esconde o submenu por padrão.
+   - Outros estilos são para aparência (sombra, fundo, etc).
+*/
+nav ul .submenu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Começa exatamente onde o item pai termina */
+    left: 0;
+    background-color: saddlebrown;
+    list-style: none;
+    padding: 10px;
+    border-radius: 0 0 5px 5px; /* Bordas arredondadas apenas na parte de baixo */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    min-width: 200px; /* Largura mínima para o dropdown */
+    z-index: 10; /* Garante que o dropdown fique na frente de outros conteúdos */
+}
+
+/* 3. A MÁGICA: Mostra o submenu quando o mouse passa sobre o item pai.
+   Este seletor diz: "Quando o mouse estiver sobre um 'li' do menu principal,
+   encontre um elemento com a classe '.submenu' DENTRO dele e mude seu display para 'block'". */
+nav > ul > li:hover > .submenu {
+    display: block;
+}
+
+/* 4. Estiliza os itens DENTRO do submenu para melhor aparência. */
+.submenu li {
+    margin-bottom: 5px; /* Espaçamento entre os links do dropdown */
+}
+
+.submenu li a {
     color: white;
-    font-weight: bold;
-    padding: 5px 10px; /* Adiciona uma área de clique maior */
-    border-radius: 5px; /* Bordas levemente arredondadas */
-    transition: all 0.3s ease; /* Transição suave para todas as propriedades */
+    padding: 8px 12px;
+    display: block; /* Faz o link ocupar toda a largura do 'li' */
+    text-align: left;
+    white-space: nowrap; /* Impede que o texto quebre em duas linhas */
+    border-radius: 3px;
+    text-decoration: none;
 }
 
-/* Efeito visual quando o mouse passa sobre um link */
-nav ul li a:hover {
+/* Efeito hover para os links do submenu */
+.submenu li a:hover {
+    background-color: darkred;
     color: yellow;
-    background-color: rgba(0, 0, 0, 0.2); /* Fundo sutil para destacar */
-    transform: scale(1.1); /* Efeito de zoom suave, melhor que mudar o font-size */
+    /* Resetamos o transform aqui para não ter zoom dentro do dropdown */
+    transform: none; 
 }
-
 
 /* =================================
    4. SEÇÕES DE CONTEÚDO (SECTION)
