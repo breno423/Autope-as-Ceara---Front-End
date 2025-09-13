@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+header {
+    background-color: saddlebrown;
+    height: 75px;
+    display: flex;
+    flex-direction: column; /* coloca h1 em cima e menu embaixo */
+    justify-content: center; /* centraliza no eixo vertical */
+    align-items: center;     /* centraliza no eixo horizontal */
+    gap: 10px; /* espaço entre o título e o menu */
+}
+header h1{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    justify-content: center; /* centraliza no header */
+    padding: 0;
+    margin: 0;
+}
+
+
+nav ul li a {
+    text-decoration: none; /* tira sublinhado */
+    color: white;          /* texto branco */
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: yellow; /* cor ao passar o mouse */
+}
+
+}
