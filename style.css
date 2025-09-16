@@ -1,6 +1,3 @@
-/* =================================
-     5. BUSCA NO HEADER
-     ================================= */
 
 .search-box {
     display: flex;
@@ -27,28 +24,19 @@
     width: 28px;
     justify-content: center;
 }
-/* =================================
-   1. ESTILOS GERAIS E RESET
-   ================================= */
-
-/* Reset universal para remover margens e preenchimentos padrão do navegador. 
-   Isso garante que o layout seja mais consistente entre diferentes browsers. */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Faz com que padding e border não aumentem a largura total do elemento */
+    box-sizing: border-box; 
 }
 
-/* Estilos base para todo o corpo do documento */
+
 body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    line-height: 1.6; /* Melhora a legibilidade do texto */
+    line-height: 1.6; 
 }
 
 
-/* =================================
-   2. CABEÇALHO (HEADER)
-   ================================= */
 
 header {
     background-color: saddlebrown;
@@ -56,11 +44,7 @@ header {
     color: white;
 }
 
-/* Container flexível para alinhar os itens do cabeçalho.
-   - display: flex -> Ativa o layout flexível.
-   - justify-content: space-between -> Distribui os itens: o primeiro na esquerda, o último na direita e o restante no meio.
-   - align-items: center -> Alinha os itens verticalmente ao centro.
-*/
+
 .header-content {
     display: flex;
     justify-content: space-between;
@@ -70,9 +54,7 @@ header {
     padding: 0 20px;   /* Adiciona um respiro nas laterais em telas menores */
 }
 
-/* Elemento 'fantasma' usado para empurrar o título H1.
-   Como o logo tem uma largura, este placeholder com a mesma largura do logo
-   garante que o H1 fique perfeitamente centralizado no espaço disponível. */
+
 .header-placeholder {
     width: 100px; /* Idealmente, a mesma largura do logo */
     height: 100px;
@@ -85,29 +67,10 @@ header h1 {
 
 .logo {
     height: 100px;
-    width: 100px; /* Definir uma largura fixa ajuda a alinhar com o placeholder */
-    object-fit: contain; /* Garante que a imagem não seja distorcida */
+    width: 100px; 
+    object-fit: contain; 
 }
 
-
-/* =================================
-   3. NAVEGAÇÃO (NAV)
-   ================================= */
-
-/* =================================
-   3. NAVEGAÇÃO (NAV) - COM DROPDOWN
-   ================================= */
-
-/* --- ESTILOS QUE VOCÊ JÁ TINHA --- */
-/* =================================
-   3. NAVEGAÇÃO (NAV)
-   ================================= */
-
-/* =================================
-   3. NAVEGAÇÃO (NAV) - COM DROPDOWN
-   ================================= */
-
-/* --- ESTILOS QUE VOCÊ JÁ TINHA --- */
 nav {
     padding-top: 10px;
 }
@@ -120,87 +83,71 @@ nav ul {
 }
 
 nav ul li a{
-    text-decoration: none !important; /* Adicione !important aqui se o sublinhado persistir */
-    color: white; /* Garante que a cor do texto seja branca nos links da nav */
+    text-decoration: none !important; 
+    color: white; 
 }
 
-/* --- NOVAS REGRAS PARA O DROPDOWN --- */
 
-/* 1. Prepara o item principal para ser a referência de posição.
-   Isso é CRUCIAL para o submenu aparecer logo abaixo dele. */
 nav > ul > li {
-    position: relative; /* O pai precisa ser relativo */
+    position: relative; 
 }
 
-/* 2. Esconde e posiciona o submenu.
-   - position: absolute -> Posiciona o submenu em relação ao 'li' pai.
-   - display: none -> Esconde o submenu por padrão.
-   - Outros estilos são para aparência (sombra, fundo, etc).
-*/
 nav ul .submenu {
     display: none;
     position: absolute;
-    top: 100%; /* Começa exatamente onde o item pai termina */
+    top: 100%; 
     left: 0;
     background-color: saddlebrown;
     list-style: none;
     padding: 10px;
-    border-radius: 0 0 5px 5px; /* Bordas arredondadas apenas na parte de baixo */
+    border-radius: 0 0 5px 5px; 
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    min-width: 200px; /* Largura mínima para o dropdown */
-    z-index: 10; /* Garante que o dropdown fique na frente de outros conteúdos */
+    min-width: 200px;
+    z-index: 10; 
 }
 
-/* 3. A MÁGICA: Mostra o submenu quando o mouse passa sobre o item pai.
-   Este seletor diz: "Quando o mouse estiver sobre um 'li' do menu principal,
-   encontre um elemento com a classe '.submenu' DENTRO dele e mude seu display para 'block'". */
+
 nav > ul > li:hover > .submenu {
     display: block;
 }
 
-/* 4. Estiliza os itens DENTRO do submenu para melhor aparência. */
+
 .submenu li {
-    margin-bottom: 5px; /* Espaçamento entre os links do dropdown */
+    margin-bottom: 5px; 
 }
 
 .submenu li a {
     color: white;
     padding: 8px 12px;
-    display: block; /* Faz o link ocupar toda a largura do 'li' */
+    display: block; 
     text-align: left;
-    white-space: nowrap; /* Impede que o texto quebre em duas linhas */
+    white-space: nowrap; 
     border-radius: 3px;
     text-decoration: none;
 }
 
-/* Efeito hover para os links do submenu */
+
 .submenu li a:hover {
     background-color: darkred;
     color: yellow;
     font-size: 15px;
-    /* Resetamos o transform aqui para não ter zoom dentro do dropdown */
+    
     transform: none; 
 }
 
-/* =================================
-   4. SEÇÕES DE CONTEÚDO (SECTION)
-   ================================= */
-
 section {
-    padding: 80px 0px; /* Espaço vertical entre as seções e um respiro lateral */
+    padding: 80px 0px;
 }
 
-/* Estilo base para todos os títulos de seção */
+
 section h2 {
     color: white;
     text-align: left;
-    padding: 15px 20px; /* Aumenta a altura da faixa colorida */
-    max-width: 200px;  /* Alinha a faixa com o conteúdo do header */    /* Centraliza a faixa na página */
+    padding: 15px 20px; 
+    max-width: 200px;  
 }
 
-/* Regra ÚNICA para a cor de fundo dos títulos.
-   Agrupamos todos os seletores que compartilham o mesmo estilo
-   para evitar repetição de código (Princípio DRY - Don't Repeat Yourself). */
+
 #Motores h2,
 #Pneus h2,
 #Autopeças h2,
