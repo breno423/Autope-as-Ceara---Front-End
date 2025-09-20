@@ -13,7 +13,7 @@ body {
     /* FONTE ATUALIZADA */
     font-family: 'Roboto Condensed', sans-serif; 
     line-height: 1.6;
-    background-image: url('car2.jpg'); /* Mantenha sua imagem de fundo */
+    background-image: url('imagens/car2.jpg'); /* Mantenha sua imagem de fundo */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
