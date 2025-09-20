@@ -128,6 +128,37 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    function mostrarSaudacao(nome) {
+        const loginBtn = document.getElementById('openModal');
+        if (loginBtn) {
+            loginBtn.style.display = 'none';
+            let saudacao = document.getElementById('saudacao-usuario');
+            if (!saudacao) {
+                saudacao = document.createElement('span');
+                saudacao.id = 'saudacao-usuario';
+                saudacao.className = 'saudacao-usuario';
+                loginBtn.parentNode.appendChild(saudacao);
+            }
+            saudacao.textContent = `Olá, ${nome}`;
+            saudacao.style.fontWeight = 'bold';
+            saudacao.style.color = 'saddlebrown';
+            saudacao.style.marginLeft = '18px';
+        }
+    }
+    // Login
+    const loginForm = document.querySelector('#login form');
+    if (loginForm) {
+        loginForm.onsubmit = function(e) {
+            e.preventDefault();
+            const nome = loginForm.querySelector('input[type="email"]').value.split('@')[0];
+            document.getElementById('loginModal').style.display = 'none';
+            mostrarSaudacao(nome);
+        }
+    }
+});
+</script>
 </body>
 
 </html>
