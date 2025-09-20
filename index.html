@@ -7,6 +7,9 @@
     <title>AutoPeças Maia</title>
     <link rel="stylesheet" href="style.css">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -34,27 +37,39 @@
         <nav>
             <ul>
                 <li>
-                    <a href="#Motores">Motores</a>
+                    <a href="#Motores">
+                        <i class="fas fa-cogs"></i> Motores
+                    </a>
                     <ul class="submenu">
-                        <li><a href="#">Motores a Gasolina</a></li>
-                        <li><a href="#">Motores a Diesel</a></li>
-                        <li><a href="#">Componentes</a></li>
+                        <li><a href="#"><i class="fas fa-gas-pump"></i> Motores a Gasolina</a></li>
+                        <li><a href="#"><i class="fas fa-industry"></i> Motores a Diesel</a></li>
+                        <li><a href="#"><i class="fas fa-tools"></i> Componentes</a></li>
                     </ul>
                 </li>
-
-                <li><a href="#Pneus">Pneus</a></li>
 
                 <li>
-                    <a href="#Autopeças">Autopeças</a>
+                    <a href="#Pneus">
+                            <i class="fa-solid fa-life-ring"></i> Pneus
+                        </a>
+                </li>
+
+                <li>
+                    <a href="#Autopeças">
+                        <i class="fas fa-car-battery"></i> Autopeças
+                    </a>
                     <ul class="submenu">
-                        <li><a href="#">Freios</a></li>
-                        <li><a href="#">Filtros</a></li>
-                        <li><a href="#">Elétrica</a></li>
-                        <li><a href="#">Acessórios</a></li>
+                        <li><a href="#"><i class="fas fa-car-crash"></i> Freios</a></li>
+                        <li><a href="#"><i class="fas fa-filter"></i> Filtros</a></li>
+                        <li><a href="#"><i class="fas fa-bolt"></i> Elétrica</a></li>
+                        <li><a href="#"><i class="fas fa-wrench"></i> Acessórios</a></li>
                     </ul>
                 </li>
 
-                <li><a href="#AmortecedoreseSuspensões">Amortecedores e Suspensões</a></li>
+                <li>
+                    <a href="#AmortecedoreseSuspensões">
+                        <i class="fas fa-car-side"></i> Amortecedores e Suspensões
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -118,7 +133,6 @@
                     <input type="tel" placeholder="Telefone" required>
                     <input type="text" name="cpf" placeholder="Digite seu CPF" maxlength="14"
                         pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato: 000.000.000-00" required>
-
                     <button type="submit">Cadastrar</button>
                 </form>
             </div>
