@@ -118,3 +118,33 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+  // ao carregar a página
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".product-img").forEach(container => {
+    const imgs = container.querySelectorAll("img");
+    if (imgs.length > 1) {
+      let index = 0;
+      imgs[0].classList.add("ativa");
+
+      // cria botões
+      const prev = document.createElement("button");
+      prev.innerHTML = "&#10094;"; // seta esquerda
+      prev.classList.add("prev");
+      prev.onclick = () => mudarImagem(-1);
+
+      const next = document.createElement("button");
+      next.innerHTML = "&#10095;"; // seta direita
+      next.classList.add("next");
+      next.onclick = () => mudarImagem(1);
+
+      container.appendChild(prev);
+      container.appendChild(next);
+
+      function mudarImagem(direcao) {
+        imgs[index].classList.remove("ativa");
+        index = (index + direcao + imgs.length) % imgs.length;
+        imgs[index].classList.add("ativa");
+      }
+    }
+  });
+});
