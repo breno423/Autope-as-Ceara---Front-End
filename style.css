@@ -38,79 +38,113 @@ body {
 
 
 
+/* Geral */
 header {
     background-color: black;
-    padding: 10px 0;
     color: white;
+    border-bottom: 3px solid gray; /* separação clean */
 }
 
-
-.header-content {
+/* Faixa Superior */
+.header-top {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    max-width: 1200px; /* Largura máxima para o conteúdo do header */
-    margin: 0 auto;    /* Centraliza o container na página */
-    padding: 0 20px;   /* Adiciona um respiro nas laterais em telas menores */
-}
-
-
-.header-placeholder {
-    width: 100px; /* Idealmente, a mesma largura do logo */
-    height: 100px;
-}
-
-header h1 {
-    text-align: center;
-    /* O H1 ocupará o espaço central graças ao space-between e ao placeholder */
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
 }
 
 .logo {
-    height: 100px;
-    width: 100px; 
-    object-fit: contain; 
+    height: 80px;
+    width: auto;
+    object-fit: contain;
 }
 
-nav {
-    padding-top: 10px;
+.search-box {
+    flex: 1; /* ocupa o espaço central */
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 20px;
 }
 
-nav ul {
+.search-input {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.search-icon {
+    display: flex;
+    align-items: center;
+    color: #555;
+    background: white;
+    border-radius: 50%;
+    padding: 5px;
+    height: 32px;
+    width: 32px;
+    justify-content: center;
+}
+
+.login-btn {
+    padding: 8px 16px;
+    background-color: darkred;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Faixa Inferior (Menu) */
+.header-bottom {
+    background-color: grey;
+}
+
+.header-bottom ul {
     display: flex;
     justify-content: center;
     list-style: none;
     gap: 25px;
+    padding: 12px 0;
+    margin: 0;
 }
 
-nav ul li a{
-    text-decoration: none !important; 
-    color: white; 
+.header-bottom ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
-
-nav > ul > li {
-    position: relative; 
+.header-bottom ul li a:hover {
+    color: yellow;
 }
 
+/* Submenu */
 nav ul .submenu {
     display: none;
     position: absolute;
     top: 100%; 
     left: 0;
-    background-color: saddlebrown;
+    background-color: grey;
     list-style: none;
     padding: 10px;
-    border-radius: 0 0 5px 5px; 
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
     min-width: 200px;
-    z-index: 10; 
+    z-index: 10;
 }
-
 
 nav > ul > li:hover > .submenu {
     display: block;
 }
-
 
 .submenu li {
     margin-bottom: 5px; 
@@ -128,7 +162,7 @@ nav > ul > li:hover > .submenu {
 
 
 .submenu li a:hover {
-    background-color: darkred;
+    background-color: grey;
     color: yellow;
     font-size: 15px;
     

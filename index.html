@@ -14,65 +14,53 @@
 
 <body>
 
-    <header>
-        <div class="header-content">
-            <div class="header-placeholder"></div>
+   <header>
+    <!-- Faixa Superior -->
+    <div class="header-top">
+        <div class="logo-container">
             <img src="logo - Editado.png" alt="Logo da AutoPeças Maia" class="logo">
-
-            <div class="search-box">
-                <input type="text" id="searchInput" class="search-input" placeholder="Buscar...">
-                <span class="search-icon">
-                    <!-- Ícone SVG de lupa -->
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </span>
-            </div>
-
-            <button class="login-btn" id="openModal">Login/Cadastro</button>
         </div>
 
-        <nav>
-            <ul>
-                <li>
-                    <a href="#Motores">
-                        <i class="fas fa-cogs"></i> Motores
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="#"><i class="fas fa-gas-pump"></i> Motores a Gasolina</a></li>
-                        <li><a href="#"><i class="fas fa-industry"></i> Motores a Diesel</a></li>
-                        <li><a href="#"><i class="fas fa-tools"></i> Componentes</a></li>
-                    </ul>
-                </li>
+        <div class="search-box">
+            <input type="text" id="searchInput" class="search-input" placeholder="Buscar...">
+            <span class="search-icon">
+                <!-- Ícone SVG de lupa -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </span>
+        </div>
 
-                <li>
-                    <a href="#Pneus">
-                            <i class="fa-solid fa-life-ring"></i> Pneus
-                        </a>
-                </li>
+        <button class="login-btn" id="openModal">Login/Cadastro</button>
+    </div>
 
-                <li>
-                    <a href="#Autopeças">
-                        <i class="fas fa-car-battery"></i> Autopeças
-                    </a>
-                    <ul class="submenu">
-                        <li><a href="#"><i class="fas fa-car-crash"></i> Freios</a></li>
-                        <li><a href="#"><i class="fas fa-filter"></i> Filtros</a></li>
-                        <li><a href="#"><i class="fas fa-bolt"></i> Elétrica</a></li>
-                        <li><a href="#"><i class="fas fa-wrench"></i> Acessórios</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#AmortecedoreseSuspensões">
-                        <i class="fas fa-car-side"></i> Amortecedores e Suspensões
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Faixa Inferior (Menu de Categorias) -->
+    <nav class="header-bottom">
+        <ul>
+            <li>
+                <a href="#Motores"><i class="fas fa-cogs"></i> Motores</a>
+                <ul class="submenu">
+                    <li><a href="#"><i class="fas fa-gas-pump"></i> Motores a Gasolina</a></li>
+                    <li><a href="#"><i class="fas fa-industry"></i> Motores a Diesel</a></li>
+                    <li><a href="#"><i class="fas fa-tools"></i> Componentes</a></li>
+                </ul>
+            </li>
+            <li><a href="#Pneus"><i class="fa-solid fa-life-ring"></i> Pneus</a></li>
+            <li>
+                <a href="#Autopeças"><i class="fas fa-car-battery"></i> Autopeças</a>
+                <ul class="submenu">
+                    <li><a href="#"><i class="fas fa-car-crash"></i> Freios</a></li>
+                    <li><a href="#"><i class="fas fa-filter"></i> Filtros</a></li>
+                    <li><a href="#"><i class="fas fa-bolt"></i> Elétrica</a></li>
+                    <li><a href="#"><i class="fas fa-wrench"></i> Acessórios</a></li>
+                </ul>
+            </li>
+            <li><a href="#AmortecedoreseSuspensões"><i class="fas fa-car-side"></i> Amortecedores e Suspensões</a></li>
+        </ul>
+    </nav>
+</header>
 
     <main>
         <section id="produtosEmDestaque">
