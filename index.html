@@ -5,106 +5,158 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoPeças Maia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" 
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
 
-   <header>
-    <!-- Faixa Superior -->
-    <div class="header-top">
-        <div class="logo-container">
-            <img src="logo - Editado.png" alt="Logo da AutoPeças Maia" class="logo">
+    <header>
+        <div class="header-top">
+            <div class="logo-container">
+                <img src="logo - Editado.png" alt="Logo da AutoPeças Maia" class="logo">
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="searchInput" class="search-input" placeholder="Buscar peças...">
+                <span class="search-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </span>
+            </div>
+            
+            <div class="header-right">
+                 <button class="login-btn" id="openModal">Login/Cadastro</button>
+            </div>
         </div>
 
-        <div class="search-box">
-            <input type="text" id="searchInput" class="search-input" placeholder="Buscar...">
-            <span class="search-icon">
-                <!-- Ícone SVG de lupa -->
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-            </span>
-        </div>
-
-        <button class="login-btn" id="openModal">Login/Cadastro</button>
-    </div>
-
-    <!-- Faixa Inferior (Menu de Categorias) -->
-    <nav class="header-bottom">
-        <ul>
-            <li>
-                <a href="#Motores"><i class="fas fa-cogs"></i> Motores</a>
-                <ul class="submenu">
-                    <li><a href="#"><i class="fas fa-gas-pump"></i> Motores a Gasolina</a></li>
-                    <li><a href="#"><i class="fas fa-industry"></i> Motores a Diesel</a></li>
-                    <li><a href="#"><i class="fas fa-tools"></i> Componentes</a></li>
-                </ul>
-            </li>
-            <li><a href="#Pneus"><i class="fa-solid fa-life-ring"></i> Pneus</a></li>
-            <li>
-                <a href="#Autopeças"><i class="fas fa-car-battery"></i> Autopeças</a>
-                <ul class="submenu">
-                    <li><a href="#"><i class="fas fa-car-crash"></i> Freios</a></li>
-                    <li><a href="#"><i class="fas fa-filter"></i> Filtros</a></li>
-                    <li><a href="#"><i class="fas fa-bolt"></i> Elétrica</a></li>
-                    <li><a href="#"><i class="fas fa-wrench"></i> Acessórios</a></li>
-                </ul>
-            </li>
-            <li><a href="#AmortecedoreseSuspensões"><i class="fas fa-car-side"></i> Amortecedores e Suspensões</a></li>
-        </ul>
-    </nav>
-</header>
+        <nav class="header-bottom">
+            <ul>
+                <li>
+                    <a href="#Motores"><i class="fas fa-cogs"></i> Motores</a>
+                    <ul class="submenu">
+                        <li><a href="#"><i class="fas fa-gas-pump"></i> Motores a Gasolina</a></li>
+                        <li><a href="#"><i class="fas fa-industry"></i> Motores a Diesel</a></li>
+                        <li><a href="#"><i class="fas fa-tools"></i> Componentes</a></li>
+                    </ul>
+                </li>
+                <li><a href="#Pneus"><i class="fa-solid fa-life-ring"></i> Pneus</a></li>
+                <li>
+                    <a href="#Autopeças"><i class="fas fa-car-battery"></i> Autopeças</a>
+                    <ul class="submenu">
+                        <li><a href="#"><i class="fas fa-car-crash"></i> Freios</a></li>
+                        <li><a href="#"><i class="fas fa-filter"></i> Filtros</a></li>
+                        <li><a href="#"><i class="fas fa-bolt"></i> Elétrica</a></li>
+                        <li><a href="#"><i class="fas fa-wrench"></i> Acessórios</a></li>
+                    </ul>
+                </li>
+                <li><a href="#AmortecedoreseSuspensões"><i class="fas fa-car-side"></i> Suspensão</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
         <section id="produtosEmDestaque">
-            <h2>Produtos em Destaque</h2>
-            <div class="product-list">
-                <div class="product-item">
-                    <h3>Vela de Ignição Bosch</h3>
-                    <p>Compatível com diversos modelos.</p>
-                    <span>R$ 25,00</span>
-                </div>
-                <div class="product-item">
-                    <h3>Pneu Aro 15 Michelin</h3>
-                    <p>Alta durabilidade e performance.</p>
-                    <span>R$ 350,00</span>
-                </div>
-                <div class="product-item">
-                    <h3>Amortecedor Cofap</h3>
-                    <p>Para suspensão dianteira.</p>
-                    <span>R$ 180,00</span>
-                </div>
-                <div class="product-item">
-                    <h3>Filtro de Óleo Fram</h3>
-                    <p>Mantenha seu motor protegido.</p>
-                    <span>R$ 45,00</span>
-                </div>
-                <div class="product-item">
-                    <h3>Lâmpada H7 Philips</h3>
-                    <p>Maior visibilidade noturna.</p>
-                    <span>R$ 60,00</span>
+            <div class="section-container">
+                <h2>Produtos em Destaque</h2>
+                <div class="product-list">
+                    <div class="product-item">
+                        <h3>Vela de Ignição Bosch</h3>
+                        <p>Compatível com diversos modelos.</p>
+                        <span>R$ 25,00</span>
+                    </div>
+                    <div class="product-item">
+                        <h3>Pneu Aro 15 Michelin</h3>
+                        <p>Alta durabilidade e performance.</p>
+                        <span>R$ 350,00</span>
+                    </div>
+                    <div class="product-item">
+                        <h3>Amortecedor Cofap</h3>
+                        <p>Para suspensão dianteira.</p>
+                        <span>R$ 180,00</span>
+                    </div>
+                    <div class="product-item">
+                        <h3>Filtro de Óleo Fram</h3>
+                        <p>Mantenha seu motor protegido.</p>
+                        <span>R$ 45,00</span>
+                    </div>
+                    <div class="product-item">
+                        <h3>Lâmpada H7 Philips</h3>
+                        <p>Maior visibilidade noturna.</p>
+                        <span>R$ 60,00</span>
+                    </div>
                 </div>
             </div>
         </section>
+        
+        <section id="Motores">
+             <div class="section-container">
+                <h2>Motores</h2>
+                <div class="product-list">
+                    <div class="product-item">
+                        <h3>Kit de Motor Completo</h3>
+                        <p>Motor 1.6 a gasolina, pronto para instalar.</p>
+                        <span>R$ 4.500,00</span>
+                    </div>
+                     <div class="product-item">
+                        <h3>Bomba de Combustível</h3>
+                        <p>Para motores a diesel de alta performance.</p>
+                        <span>R$ 550,00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="Pneus">
+            <div class="section-container">
+                <h2>Pneus</h2>
+                <div class="product-list">
+                    <div class="product-item">
+                        <h3>Pneu Aro 17 Pirelli</h3>
+                        <p>Segurança e estabilidade em pista molhada.</p>
+                        <span>R$ 480,00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="Autopeças">
+            <div class="section-container">
+                <h2>Autopeças</h2>
+                <div class="product-list">
+                    <div class="product-item">
+                        <h3>Kit de Freio a Disco</h3>
+                        <p>Pastilhas e discos para maior segurança.</p>
+                        <span>R$ 250,00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="AmortecedoreseSuspensões">
+            <div class="section-container">
+                <h2>Amortecedores e Suspensões</h2>
+                 <div class="product-list">
+                    <div class="product-item">
+                        <h3>Kit de Suspensão a Rosca</h3>
+                        <p>Ajuste a altura do seu veículo com precisão.</p>
+                        <span>R$ 890,00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Modal Login/Cadastro -->
     <div class="modal" id="loginModal">
         <div class="modal-content">
             <span class="close-btn" id="closeModal">&times;</span>
-
             <div class="modal-tabs">
                 <button class="tab-btn active" data-tab="login">Login</button>
                 <button class="tab-btn" data-tab="cadastro">Cadastro</button>
             </div>
-
             <div class="tab-content active" id="login">
                 <form>
                     <input type="email" placeholder="Email" required>
@@ -112,15 +164,13 @@
                     <button type="submit">Entrar</button>
                 </form>
             </div>
-
             <div class="tab-content" id="cadastro">
                 <form>
                     <input type="text" placeholder="Nome" required>
                     <input type="email" placeholder="Email" required>
                     <input type="password" placeholder="Senha" required>
                     <input type="tel" placeholder="Telefone" required>
-                    <input type="text" name="cpf" placeholder="Digite seu CPF" maxlength="14"
-                        pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato: 000.000.000-00" required>
+                    <input type="text" name="cpf" placeholder="Digite seu CPF" maxlength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato: 000.000.000-00" required>
                     <button type="submit">Cadastrar</button>
                 </form>
             </div>
@@ -128,37 +178,6 @@
     </div>
 
     <script src="script.js"></script>
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
-    function mostrarSaudacao(nome) {
-        const loginBtn = document.getElementById('openModal');
-        if (loginBtn) {
-            loginBtn.style.display = 'none';
-            let saudacao = document.getElementById('saudacao-usuario');
-            if (!saudacao) {
-                saudacao = document.createElement('span');
-                saudacao.id = 'saudacao-usuario';
-                saudacao.className = 'saudacao-usuario';
-                loginBtn.parentNode.appendChild(saudacao);
-            }
-            saudacao.textContent = `Olá, ${nome}`;
-            saudacao.style.fontWeight = 'bold';
-            saudacao.style.color = 'saddlebrown';
-            saudacao.style.marginLeft = '18px';
-        }
-    }
-    // Login
-    const loginForm = document.querySelector('#login form');
-    if (loginForm) {
-        loginForm.onsubmit = function(e) {
-            e.preventDefault();
-            const nome = loginForm.querySelector('input[type="email"]').value.split('@')[0];
-            document.getElementById('loginModal').style.display = 'none';
-            mostrarSaudacao(nome);
-        }
-    }
-});
-</script>
-</body>
 
+</body>
 </html>
