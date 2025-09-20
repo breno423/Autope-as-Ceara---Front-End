@@ -6,28 +6,29 @@
 }
 
 html {
-    scroll-behavior: smooth; /* Habilita a rolagem suave nativa */
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* FONTE ATUALIZADA */
+    font-family: 'Roboto Condensed', sans-serif; 
     line-height: 1.6;
-    background-image: url('car3.png'); /* Mantenha sua imagem de fundo */
+    background-image: url('car2.jpg'); /* Mantenha sua imagem de fundo */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    color: #333;
+    color: #343a40; /* Cor de texto padrão, cinza escuro */
 }
 
 /* --- CABEÇALHO --- */
 header {
-    background-color: rgba(0, 0, 0, 0.9); /* Fundo com leve transparência */
+    background-color: rgba(34, 34, 34, 0.95); /* Chumbo escuro com leve transparência */
     color: white;
-    position: sticky; /* Cabeçalho fixo no topo */
+    position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 /* Faixa Superior */
@@ -52,9 +53,10 @@ header {
     display: flex;
     align-items: center;
     margin: 0 30px;
-    background: #fff;
+    background: #ffffff; /* Fundo branco para a busca */
     border-radius: 25px;
     padding: 5px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .search-input {
@@ -64,12 +66,16 @@ header {
     outline: none;
     font-size: 1rem;
     background: transparent;
+    color: #343a40;
+    /* FONTE ATUALIZADA */
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
 .search-icon {
-    color: #555;
+    color: #6c757d; /* Cinza para o ícone */
     padding: 5px;
     cursor: pointer;
+    font-size: 1.1rem;
 }
 
 .header-right {
@@ -77,57 +83,64 @@ header {
     align-items: center;
 }
 
-.login-btn, .saudacao-usuario {
+.login-btn {
     padding: 10px 20px;
-    background-color: darkred;
+    background-color: #B00000; /* Vermelho mais vibrante */
     color: #fff;
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 700; /* FONTE ATUALIZADA (peso) */
     transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* FONTE ATUALIZADA (espaçamento) */
 }
 
 .login-btn:hover {
-    background-color: #a50000;
+    background-color: #8B0000; /* Vermelho mais escuro no hover */
     transform: scale(1.05);
 }
 
 .saudacao-usuario {
     background-color: transparent;
     font-size: 1.1em;
+    font-weight: 700;
+    color: #FFD700; /* Ouro para destaque do usuário logado */
+    margin-left: 15px;
 }
 
 /* --- BARRA DE NAVEGAÇÃO (MENU) --- */
 .header-bottom {
-    background: linear-gradient(to right, #434343, #212121); /* Gradiente moderno */
-    border-top: 1px solid #555;
+    background: linear-gradient(to right, #495057, #343a40); /* Gradiente de cinza/chumbo */
+    border-top: 1px solid #6c757d;
 }
 
 .header-bottom ul {
     display: flex;
     justify-content: center;
     list-style: none;
-    gap: 30px;
+    gap: 35px; /* Mais espaçamento */
     padding: 15px 0;
     margin: 0;
 }
 
 .header-bottom ul li {
-    position: relative; /* Necessário para o submenu */
+    position: relative;
 }
 
 .header-bottom ul li a {
     text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 1.1rem;
+    color: #e9ecef; /* Branco acinzentado */
+    font-weight: 700; /* FONTE ATUALIZADA (peso) */
+    font-size: 1.1rem; /* FONTE ATUALIZADA (tamanho) */
     display: flex;
     align-items: center;
     gap: 8px;
     padding: 10px 5px;
-    position: relative; /* Para o efeito de sublinhado */
+    position: relative;
     transition: color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* FONTE ATUALIZADA (espaçamento) */
 }
 
 /* Efeito de sublinhado animado */
@@ -139,36 +152,36 @@ header {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    background-color: yellow;
+    background-color: #FF8C00; /* Laranja para o sublinhado */
     border-radius: 2px;
     transition: width 0.4s ease;
 }
 
 .header-bottom ul li a:hover::after,
-.header-bottom ul li a.active::after { /* Estilo para link ativo */
+.header-bottom ul li a.active::after {
     width: 100%;
 }
 
 .header-bottom ul li a:hover,
 .header-bottom ul li a.active {
-    color: yellow;
+    color: #FF8C00; /* Laranja no hover/ativo */
 }
 
 /* --- SUBMENU --- */
 .submenu {
-    display: block; /* Mudar para block e controlar com opacidade/visibilidade */
+    display: block;
     opacity: 0;
     visibility: hidden;
     position: absolute;
-    top: 110%; /* Ligeiramente abaixo do item pai */
+    top: 110%;
     left: 50%;
-    transform: translateX(-50%) translateY(10px); /* Começa um pouco abaixo */
-    background-color: #333;
+    transform: translateX(-50%) translateY(10px);
+    background-color: #343a40; /* Chumbo escuro */
     list-style: none;
     padding: 10px;
     border-radius: 8px;
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
-    min-width: 220px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.6);
+    min-width: 240px; /* Um pouco mais largo */
     z-index: 10;
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
@@ -180,27 +193,30 @@ nav > ul > li:hover > .submenu {
 }
 
 .submenu li a {
-    color: white;
+    color: #e9ecef;
     padding: 10px 15px;
     display: block;
     text-align: left;
     white-space: nowrap;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 1rem; /* FONTE ATUALIZADA (tamanho) */
+    text-transform: none; 
+    letter-spacing: normal;
+    font-weight: 400; /* Peso normal para submenu */
 }
 
 .submenu li a:hover {
-    background-color: darkred;
-    color: yellow;
+    background-color: #B00000; /* Vermelho no hover do submenu */
+    color: #fff;
 }
 
 .submenu li a::after {
-    display: none; /* Remove o efeito de sublinhado dos sub-itens */
+    display: none;
 }
 
 /* --- CONTEÚDO PRINCIPAL --- */
 main {
-    padding: 40px 0;
+    padding: 50px 0;
 }
 
 section {
@@ -210,58 +226,82 @@ section {
 .section-container {
     max-width: 1200px;
     margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.95); /* Fundo branco semitransparente */
-    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.95); /* Fundo branco semitransparente para leitura */
+    padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
 section h2 {
-    font-size: 2.5rem;
-    color: darkred;
+    font-size: 3rem; /* FONTE ATUALIZADA (tamanho) */
+    color: #212529; /* Preto chumbo para títulos */
     text-align: center;
-    margin-bottom: 40px;
-    border-bottom: 3px solid #eee;
-    padding-bottom: 15px;
+    margin-bottom: 50px; /* Mais espaço */
+    border-bottom: 4px solid #B00000; /* Borda vermelha forte */
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px; /* FONTE ATUALIZADA (espaçamento) */
+    font-weight: 700;
 }
 
 .product-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Cards um pouco maiores */
+    gap: 30px; /* Mais espaçamento entre cards */
 }
 
+/* --- ESTILO DOS CARDS DE PRODUTO --- */
 .product-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
+    background-color: #f0f2f5; /* Fundo cinza claro que lembra metal escovado */
+    border: 1px solid #ced4da; /* Borda cinza */
+    border-top: 6px solid #B00000; /* Borda superior vermelha mais espessa */
+    border-radius: 8px; /* Bordas levemente arredondadas */
+    padding: 25px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .product-item:hover {
-    transform: translateY(-10px); /* Efeito de "elevar" */
-    box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    transform: translateY(-10px); /* Mais elevação */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    border-color: #FF8C00; /* Borda superior muda para laranja no hover */
 }
 
 .product-item h3 {
-    color: darkred;
-    margin-bottom: 10px;
-    font-size: 1.2rem;
+    color: #212529; /* Título do produto em preto chumbo */
+    margin-bottom: 12px;
+    font-size: 1.5rem; /* FONTE ATUALIZADA (tamanho) */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* FONTE ATUALIZADA (espaçamento) */
 }
 
 .product-item p {
-    color: #555;
-    font-size: 0.9em;
-    margin-bottom: 15px;
+    color: #6c757d; /* Descrição em cinza médio */
+    font-size: 1.1rem; /* FONTE ATUALIZADA (tamanho) */
+    margin-bottom: 25px; /* Mais espaço antes do preço */
+    min-height: 45px; /* Para alinhar cards com diferentes tamanhos de descrição */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 400; /* Peso normal para descrição */
 }
 
 .product-item span {
-    font-weight: bold;
-    color: saddlebrown;
-    font-size: 1.3em;
+    font-weight: 700; /* FONTE ATUALIZADA (peso) */
+    color: #B00000; /* Preço em vermelho forte */
+    font-size: 1.9em; /* FONTE ATUALIZADA (tamanho) */
+    padding: 10px 18px;
+    border-radius: 5px;
+    display: inline-block;
+    background-color: #fdfdfd; /* Fundo branco sutil para o preço */
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 /* --- MODAL --- */
@@ -271,55 +311,57 @@ section h2 {
     z-index: 2000;
     left: 0; top: 0;
     width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0,0,0,0.7); /* Fundo mais escuro para o modal */
     justify-content: center;
     align-items: center;
 }
 
 .modal-content {
     background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
+    padding: 40px; /* Mais padding */
+    border-radius: 12px;
     width: 90%;
-    max-width: 400px;
+    max-width: 450px; /* Modal um pouco mais largo */
     position: relative;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
 }
 
 .close-btn {
     position: absolute;
-    top: 10px; right: 20px;
-    font-size: 28px;
+    top: 15px; right: 25px;
+    font-size: 32px; /* Maior e mais visível */
     font-weight: bold;
-    color: #888;
+    color: #adb5bd; /* Cinza suave */
     cursor: pointer;
     transition: color 0.2s;
 }
 .close-btn:hover {
-    color: #000;
+    color: #B00000; /* Vermelho no hover */
 }
 
 .modal-tabs {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ddd;
+    margin-bottom: 25px; /* Mais espaço */
+    border-bottom: 2px solid #e9ecef; /* Borda mais visível */
 }
 
 .tab-btn {
     background: none;
     border: none;
-    padding: 10px 25px;
-    font-weight: bold;
+    padding: 12px 28px; /* Mais padding */
+    font-weight: 700;
     cursor: pointer;
-    color: #888;
+    color: #adb5bd;
     border-bottom: 3px solid transparent;
     transition: color 0.3s, border-color 0.3s;
+    font-size: 1.1rem;
+    text-transform: uppercase;
 }
 
 .tab-btn.active {
-    color: darkred;
-    border-bottom-color: darkred;
+    color: #B00000;
+    border-bottom-color: #B00000;
 }
 
 .tab-content { display: none; }
@@ -328,27 +370,36 @@ section h2 {
 .modal form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 18px; /* Mais espaçamento entre campos */
 }
 
 .modal input {
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
+    padding: 14px; /* Mais padding nos inputs */
+    border-radius: 8px; /* Mais arredondado */
+    border: 1px solid #ced4da; /* Borda suave */
+    font-size: 1.05rem;
+    background-color: #f8f9fa; /* Fundo suave para inputs */
+}
+.modal input:focus {
+    border-color: #B00000;
+    box-shadow: 0 0 0 0.2rem rgba(176, 0, 0, 0.25);
+    outline: none;
 }
 
 .modal button {
-    padding: 12px;
-    background-color: darkred;
+    padding: 14px;
+    background-color: #B00000;
     color: #fff;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
     transition: background-color 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
 }
 
 .modal button:hover {
-    background-color: #a50000;
+    background-color: #8B0000;
 }
