@@ -176,3 +176,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
 });
+
+ 
+
+     
+            const imagens = [
+                '1.png',
+                '2.png',
+                '3.png'
+            ];
+            let indice = 0;
+            const img = document.getElementById('carrossel-img');
+            document.getElementById('prevBtn').onclick = function() {
+                indice = (indice - 1 + imagens.length) % imagens.length;
+                img.src = imagens[indice];
+            };
+            document.getElementById('nextBtn').onclick = function() {
+                indice = (indice + 1) % imagens.length;
+                img.src = imagens[indice];
+                
+            };
+       
