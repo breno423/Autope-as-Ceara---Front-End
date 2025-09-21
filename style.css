@@ -673,3 +673,66 @@ button {
     gap: 10px;
     margin-top: 15px;
 }
+body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    footer {
+      background-color: #e85c0d; /* laranja */
+      color: #fff;
+      padding: 40px 20px 0;
+    }
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .footer-col {
+      flex: 1;
+      min-width: 200px;
+      margin: 10px;
+    }
+    .footer-col h3 {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-col ul li {
+      margin: 8px 0;
+    }
+    .footer-col ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .footer-col ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      background-color: #3a0c3e; /* roxo */
+      padding: 15px 20px;
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    .payments img {
+      height: 25px;
+      margin: 0 5px;
+    }
+
+    .socials a {
+      margin: 0 8px;
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+    }
