@@ -33,6 +33,10 @@
             
             <div class="header-right">
                  <button class="login-btn" id="openModal">Login/Cadastro</button>
+                 <div class="cart-icon" id="cartIcon">
+                     <i class="fas fa-shopping-cart"></i>
+                     <span id="cart-count">0</span>
+                 </div>
             </div>
         </div>
 
@@ -76,7 +80,7 @@
           <p>Compatível com diversos modelos.</p>
           <span>R$ 25,00</span>
           <div class="butão">
-            <button onclick="comprar()">comprar</button>
+            <button onclick="comprar('Vela de Ignição Bosch')">comprar</button>
           </div>
         
       </div>
@@ -96,7 +100,7 @@
         <p>Alta durabilidade e performance.</p>
         <span>R$ 350,00</span>
          <div class="butão">
-            <button onclick="comprar()">comprar</button>
+            <button onclick="comprar('Pneu Aro 15 Michelin')">comprar</button>
           </div>
       </div>
 
@@ -104,18 +108,27 @@
         <h3>Amortecedor Cofap</h3>
         <p>Para suspensão dianteira.</p>
         <span>R$ 180,00</span>
+        <div class="butão">
+            <button onclick="comprar('Amortecedor Cofap')">comprar</button>
+          </div>
       </div>
 
       <div class="product-item">
         <h3>Filtro de Óleo Fram</h3>
         <p>Mantenha seu motor protegido.</p>
         <span>R$ 45,00</span>
+        <div class="butão">
+            <button onclick="comprar('Filtro de Óleo Fram')">comprar</button>
+          </div>
       </div>
 
       <div class="product-item">
         <h3>Lâmpada H7 Philips</h3>
         <p>Maior visibilidade noturna.</p>
         <span>R$ 60,00</span>
+        <div class="butão">
+            <button onclick="comprar('Lâmpada H7 Philips')">comprar</button>
+          </div>
       </div>
     </div>
   </section>
@@ -130,11 +143,17 @@
                         <h3>Kit de Motor Completo</h3>
                         <p>Motor 1.6 a gasolina, pronto para instalar.</p>
                         <span>R$ 4.500,00</span>
+                        <div class="butão">
+                            <button onclick="comprar('Kit de Motor Completo')">comprar</button>
+                          </div>
                     </div>
                      <div class="product-item">
                         <h3>Bomba de Combustível</h3>
                         <p>Para motores a diesel de alta performance.</p>
                         <span>R$ 550,00</span>
+                        <div class="butão">
+                            <button onclick="comprar('Bomba de Combustível')">comprar</button>
+                          </div>
                     </div>
                 </div>
             </div>
@@ -148,6 +167,9 @@
                         <h3>Pneu Aro 17 Pirelli</h3>
                         <p>Segurança e estabilidade em pista molhada.</p>
                         <span>R$ 480,00</span>
+                        <div class="butão">
+                            <button onclick="comprar('Pneu Aro 17 Pirelli')">comprar</button>
+                          </div>
                     </div>
                 </div>
             </div>
@@ -161,6 +183,9 @@
                         <h3>Kit de Freio a Disco</h3>
                         <p>Pastilhas e discos para maior segurança.</p>
                         <span>R$ 250,00</span>
+                        <div class="butão">
+                            <button onclick="comprar('Kit de Freio a Disco')">comprar</button>
+                          </div>
                     </div>
                 </div>
             </div>
@@ -174,6 +199,9 @@
                         <h3>Kit de Suspensão a Rosca</h3>
                         <p>Ajuste a altura do seu veículo com precisão.</p>
                         <span>R$ 900,00</span>
+                        <div class="butão">
+                            <button onclick="comprar('Kit de Suspensão a Rosca')">comprar</button>
+                          </div>
                     </div>
                 </div>
             </div>
@@ -207,6 +235,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Elemento para notificação (toast) -->
+    <div id="toast" class="toast"></div>
 
     <script src="script.js"></script>
 

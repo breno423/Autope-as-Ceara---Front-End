@@ -117,34 +117,62 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(section);
     });
 
-});
-  // ao carregar a página
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".product-img").forEach(container => {
-    const imgs = container.querySelectorAll("img");
-    if (imgs.length > 1) {
-      let index = 0;
-      imgs[0].classList.add("ativa");
+    // --- LÓGICA DO CARRINHO ---
+    let cart = []; // Array para armazenar itens do carrinho (simples, sem persistência por enquanto)
 
-      // cria botões
-      const prev = document.createElement("button");
-      prev.innerHTML = "&#10094;"; // seta esquerda
-      prev.classList.add("prev");
-      prev.onclick = () => mudarImagem(-1);
-
-      const next = document.createElement("button");
-      next.innerHTML = "&#10095;"; // seta direita
-      next.classList.add("next");
-      next.onclick = () => mudarImagem(1);
-
-      container.appendChild(prev);
-      container.appendChild(next);
-
-      function mudarImagem(direcao) {
-        imgs[index].classList.remove("ativa");
-        index = (index + direcao + imgs.length) % imgs.length;
-        imgs[index].classList.add("ativa");
-      }
+    function updateCartCount() {
+        const cartCount = document.getElementById('cart-count');
+        if (cartCount) {
+            cartCount.textContent = cart.length;
+        }
     }
-  });
+
+    function showToast(message) {
+        const toast = document.getElementById('toast');
+        if (toast) {
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000); // Desaparece após 3 segundos
+        }
+    }
+
+    window.comprar = function(productName) {
+        cart.push(productName);
+        updateCartCount();
+        showToast(`${productName} adicionado ao carrinho!`);
+    };
+
+    // Inicializa o contador do carrinho
+    updateCartCount();
+
+    // --- LÓGICA DO SLIDER DE IMAGENS ---
+    document.querySelectorAll(".product-img").forEach(container => {
+        const imgs = container.querySelectorAll("img");
+        if (imgs.length > 1) {
+          let index = 0;
+          imgs[0].classList.add("ativa");
+    
+          // cria botões
+          const prev = document.createElement("button");
+          prev.innerHTML = "&#10094;"; // seta esquerda
+          prev.classList.add("prev");
+          prev.onclick = () => mudarImagem(-1);
+    
+          const next = document.createElement("button");
+          next.innerHTML = "&#10095;"; // seta direita
+          next.classList.add("next");
+          next.onclick = () => mudarImagem(1);
+    
+          container.appendChild(prev);
+          container.appendChild(next);
+    
+          function mudarImagem(direcao) {
+            imgs[index].classList.remove("ativa");
+            index = (index + direcao + imgs.length) % imgs.length;
+            imgs[index].classList.add("ativa");
+          }
+        }
+      });
 });
