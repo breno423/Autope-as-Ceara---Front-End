@@ -303,21 +303,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // --- LÓGICA DO CARROSSEL ---
-    const imagens = [
-        'imagens/1.png',
-        'imagens/2.png',
-        'imagens/3.png',
-        'imagens/4.png'
-    ];
-    let indice = 0;
-    const img = document.getElementById('carrossel-img');
-    document.getElementById('prevBtn').onclick = function() {
-        indice = (indice - 1 + imagens.length) % imagens.length;
-        img.src = imagens[indice];
-    };
-    document.getElementById('nextBtn').onclick = function() {
-        indice = (indice + 1) % imagens.length;
-        img.src = imagens[indice];
-    };
+    const slides = document.getElementById('slides');
+    const nav = document.querySelectorAll('#navegacao div');
+    let index = 0;
+
+    function mostrarSlide(i) {
+      slides.style.transform = `translateX(${-i * 100}%)`;
+      nav.forEach(dot => dot.classList.remove('ativo'));
+      nav[i].classList.add('ativo');
+    }
+
+    nav.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        index = i;
+        mostrarSlide(index);
+      });
+    });
+
+    setInterval(() => {
+      index = (index + 1) % 3;
+      mostrarSlide(index);
+    }, 4000);
+    mostrarSlide(index);
 });

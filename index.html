@@ -2,10 +2,10 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+     <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrossel Autopeças</title>
     <title>AutoPeças Maia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,13 +61,39 @@
                 <li><a href="#AmortecedoreseSuspensões"><i class="fas fa-car-side"></i> Suspensão</a></li>
             </ul>
         </nav>
-    </header>
-    <div class="carrossel">
-        <button class="carrossel-btn" id="prevBtn">&#10094;</button>
-        <img id="carrossel-img" src="imagens/1.png" alt="Imagem do Carrossel" />
-        <button class="carrossel-btn" id="nextBtn">&#10095;</button>
+    </head>
+<body>
+
+ <div class="carrossel">
+  <div class="slides" id="slides">
+
+    <!-- Slide 1 -->
+    <div class="slide" style="background-image: url('conheçaceara.png');">   
     </div>
-    <main>
+
+    <!-- Slide 2 -->
+    <div class="slide" style="background-image: url('quemsomos.png');">
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide" style="background-image: url('qualidade.png');">
+    </div>
+
+     <!-- Slide 3 -->
+    <div class="slide" style="background-image: url('feedbacks.png');">
+    </div>
+
+  </div>
+
+  <!-- Navegação -->
+  <div class="navegacao" id="navegacao">
+    <div class="ativo"></div>
+    <div></div>
+    <div></div>
+     <div></div>
+  </div>
+</div>
+
         <section id="produtosEmDestaque">
             <div class="section-container">
                 <h2>Produtos em Destaque</h2>
