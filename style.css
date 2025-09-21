@@ -283,7 +283,7 @@ section h2 {
 
 /* --- ESTILO DOS CARDS DE PRODUTO --- */
 .product-item {
-    background-color: #f0f2f5; /* Fundo cinza claro que lembra metal escovado */
+    background-color:rgba(128, 128, 128, 0.5);; /* Fundo cinza claro que lembra metal escovado */
     border: 1px solid #ced4da; /* Borda cinza */
     border-top: 6px solid #B00000; /* Borda superior vermelha mais espessa */
     border-radius: 8px; /* Bordas levemente arredondadas */
