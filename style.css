@@ -11,20 +11,12 @@ html {
 body {
     font-family: 'Roboto Condensed', sans-serif;
     line-height: 1.6;
-<<<<<<< Updated upstream
     background-image: url('imagens/unnamed (2).png');
-=======
->>>>>>> Stashed changes
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-<<<<<<< Updated upstream
     color: #343a40;
-=======
-    color: #343a40; /* Cor de texto padrão, cinza escuro */
-    background-color: #212529;
->>>>>>> Stashed changes
 }
 
 header {
