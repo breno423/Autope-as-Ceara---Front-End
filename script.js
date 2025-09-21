@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    
     // --- LÓGICA DO MODAL (LOGIN/CADASTRO) ---
     const openModalBtn = document.getElementById('openModal');
     const modal = document.getElementById('loginModal');
@@ -73,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const searchTerm = event.target.value.toLowerCase();
             productItems.forEach(function(item) {
                 const itemText = item.textContent.toLowerCase();
-                // Lógica para esconder a seção inteira se todos os produtos nela forem escondidos
                 const productList = item.parentElement;
                 const section = productList.parentElement.parentElement;
 
@@ -82,8 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else {
                     item.style.display = 'none';
                 }
-                
-                // Verifica se algum item ainda está visível na lista
+
                 const anyVisible = Array.from(productList.children).some(child => child.style.display !== 'none');
                 section.style.display = anyVisible ? 'block' : 'none';
             });
@@ -95,9 +92,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.header-bottom nav a');
 
     const observerOptions = {
-        root: null, // viewport
+        root: null,
         rootMargin: '0px',
-        threshold: 0.4 // 40% da seção deve estar visível
+        threshold: 0.4
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -118,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // --- LÓGICA DO CARRINHO ---
-    let cart = []; // Array para armazenar itens do carrinho (simples, sem persistência por enquanto)
+    let cart = [];
 
     function updateCartCount() {
         const cartCount = document.getElementById('cart-count');
@@ -134,66 +131,193 @@ document.addEventListener('DOMContentLoaded', function() {
             toast.classList.add('show');
             setTimeout(() => {
                 toast.classList.remove('show');
-            }, 3000); // Desaparece após 3 segundos
+            }, 3000);
         }
     }
 
-    window.comprar = function(productName) {
-        cart.push(productName);
+    window.comprar = function(productName, price, imgSrc, details) {
+        cart.push({name: productName, price: price, imgSrc: imgSrc, details: details});
         updateCartCount();
         showToast(`${productName} adicionado ao carrinho!`);
     };
 
-    // Inicializa o contador do carrinho
     updateCartCount();
 
-    // --- LÓGICA DO SLIDER DE IMAGENS ---
+    const cartIcon = document.getElementById('cartIcon');
+    const cartModal = document.getElementById('cartModal');
+
+    cartIcon.addEventListener('click', () => {
+        atualizarModalCarrinho();
+        cartModal.style.display = 'flex';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === cartModal) {
+            cartModal.style.display = 'none';
+        }
+    });
+
+    function atualizarModalCarrinho() {
+        const cartItemsList = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        cartItemsList.innerHTML = '';
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                ${item.name} <span>R$ ${item.price.toFixed(2)}</span>
+                <div>
+                    <button onclick="mostrarDetalhesCarrinho(${index})">Detalhes</button>
+                    <button onclick="removerItem(${index})">Remover</button>
+                </div>
+            `;
+            cartItemsList.appendChild(li);
+            total += item.price;
+        });
+
+        cartTotal.textContent = `Total: R$ ${total.toFixed(2)}`;
+    }
+
+    window.removerItem = function(index) {
+        cart.splice(index, 1);
+        updateCartCount();
+        atualizarModalCarrinho();
+        showToast('Item removido do carrinho!');
+    };
+
+    window.limparCarrinho = function() {
+        cart = [];
+        updateCartCount();
+        atualizarModalCarrinho();
+        showToast('Carrinho limpo!');
+    };
+
+    window.prosseguirCompra = function() {
+        alert('Prosseguindo para pagamento... (Funcionalidade em desenvolvimento)');
+    };
+
+    // --- LÓGICA DE DETALHES DO PRODUTO ---
+    let currentProduct = null;
+
+    window.mostrarDetalhes = function(productElement) {
+        currentProduct = {
+            title: productElement.querySelector('h3').textContent,
+            desc: productElement.querySelector('p').textContent,
+            price: parseFloat(productElement.querySelector('span').textContent.replace('R$ ', '').replace(',', '.')),
+            imgSrc: productElement.querySelector('.product-img img') ? productElement.querySelector('.product-img img').src : '',
+            details: productElement.dataset.details || 'Detalhes adicionais não disponíveis.'
+        };
+
+        const detailModal = document.getElementById('productDetailsModal');
+        document.getElementById('detailImg').src = currentProduct.imgSrc;
+        document.getElementById('detailTitle').textContent = currentProduct.title;
+        document.getElementById('detailDesc').textContent = currentProduct.desc;
+        document.getElementById('detailPrice').textContent = `R$ ${currentProduct.price.toFixed(2)}`;
+
+        const specsList = document.getElementById('detailSpecs');
+        specsList.innerHTML = '';
+        currentProduct.details.split('. ').forEach(spec => {
+            if (spec.trim()) {
+                const li = document.createElement('li');
+                li.textContent = spec.trim() + '.';
+                specsList.appendChild(li);
+            }
+        });
+
+        detailModal.style.display = 'flex';
+    };
+
+    window.mostrarDetalhesCarrinho = function(index) {
+        const item = cart[index];
+        currentProduct = {
+            title: item.name,
+            price: item.price,
+            imgSrc: item.imgSrc,
+            details: item.details || 'Detalhes adicionais não disponíveis.',
+            desc: 'Consulte as especificações abaixo para mais informações.'
+        };
+
+        const detailModal = document.getElementById('productDetailsModal');
+        document.getElementById('detailImg').src = currentProduct.imgSrc;
+        document.getElementById('detailTitle').textContent = currentProduct.title;
+        document.getElementById('detailDesc').textContent = currentProduct.desc;
+        document.getElementById('detailPrice').textContent = `R$ ${currentProduct.price.toFixed(2)}`;
+
+        const specsList = document.getElementById('detailSpecs');
+        specsList.innerHTML = '';
+        currentProduct.details.split('. ').forEach(spec => {
+            if (spec.trim()) {
+                const li = document.createElement('li');
+                li.textContent = spec.trim() + '.';
+                specsList.appendChild(li);
+            }
+        });
+
+        detailModal.style.display = 'flex';
+    };
+
+    window.comprarDoModal = function() {
+        if (currentProduct) {
+            comprar(currentProduct.title, currentProduct.price, currentProduct.imgSrc, currentProduct.details);
+            fecharModal('productDetailsModal');
+        }
+    };
+
+    window.fecharModal = function(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+    };
+
+    window.addEventListener('click', (e) => {
+        const detailModal = document.getElementById('productDetailsModal');
+        if (e.target === detailModal) {
+            detailModal.style.display = 'none';
+        }
+    });
+
+    // --- LÓGICA DO SLIDER DE IMAGENS NOS PRODUTOS ---
     document.querySelectorAll(".product-img").forEach(container => {
         const imgs = container.querySelectorAll("img");
         if (imgs.length > 1) {
-          let index = 0;
-          imgs[0].classList.add("ativa");
-    
-          // cria botões
-          const prev = document.createElement("button");
-          prev.innerHTML = "&#10094;"; // seta esquerda
-          prev.classList.add("prev");
-          prev.onclick = () => mudarImagem(-1);
-    
-          const next = document.createElement("button");
-          next.innerHTML = "&#10095;"; // seta direita
-          next.classList.add("next");
-          next.onclick = () => mudarImagem(1);
-    
-          container.appendChild(prev);
-          container.appendChild(next);
-    
-          function mudarImagem(direcao) {
-            imgs[index].classList.remove("ativa");
-            index = (index + direcao + imgs.length) % imgs.length;
-            imgs[index].classList.add("ativa");
-          }
+            let index = 0;
+            imgs[0].classList.add("ativa");
+
+            const prev = document.createElement("button");
+            prev.innerHTML = "&#10094;";
+            prev.classList.add("prev");
+            prev.onclick = () => mudarImagem(-1);
+
+            const next = document.createElement("button");
+            next.innerHTML = "&#10095;";
+            next.classList.add("next");
+            next.onclick = () => mudarImagem(1);
+
+            container.appendChild(prev);
+            container.appendChild(next);
+
+            function mudarImagem(direcao) {
+                imgs[index].classList.remove("ativa");
+                index = (index + direcao + imgs.length) % imgs.length;
+                imgs[index].classList.add("ativa");
+            }
         }
-      });
+    });
+
+    // --- LÓGICA DO CARROSSEL ---
+    const imagens = [
+        'imagens/1.png',
+        'imagens/2.png',
+        'imagens/3.png',
+        'imagens/4.png'
+    ];
+    let indice = 0;
+    const img = document.getElementById('carrossel-img');
+    document.getElementById('prevBtn').onclick = function() {
+        indice = (indice - 1 + imagens.length) % imagens.length;
+        img.src = imagens[indice];
+    };
+    document.getElementById('nextBtn').onclick = function() {
+        indice = (indice + 1) % imagens.length;
+        img.src = imagens[indice];
+    };
 });
-
- 
-
-     
-            const imagens = [
-                '1.png',
-                '2.png',
-                '3.png'
-            ];
-            let indice = 0;
-            const img = document.getElementById('carrossel-img');
-            document.getElementById('prevBtn').onclick = function() {
-                indice = (indice - 1 + imagens.length) % imagens.length;
-                img.src = imagens[indice];
-            };
-            document.getElementById('nextBtn').onclick = function() {
-                indice = (indice + 1) % imagens.length;
-                img.src = imagens[indice];
-                
-            };
-       

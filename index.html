@@ -6,21 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoPeças Maia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
     <header>
         <div class="header-top">
             <div class="logo-container">
                 <img src="imagens/logo - Editado.png" alt="Logo da AutoPeças Maia" class="logo">
             </div>
-
             <div class="search-box">
                 <input type="text" id="searchInput" class="search-input" placeholder="Buscar peças...">
                 <span class="search-icon">
@@ -30,16 +27,14 @@
                     </svg>
                 </span>
             </div>
-            
             <div class="header-right">
-                 <button class="login-btn" id="openModal">Login/Cadastro</button>
-                 <div class="cart-icon" id="cartIcon">
-                     <i class="fas fa-shopping-cart"></i>
-                     <span id="cart-count">0</span>
-                 </div>
+                <button class="login-btn" id="openModal">Login/Cadastro</button>
+                <div class="cart-icon" id="cartIcon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </div>
             </div>
         </div>
-
         <nav class="header-bottom">
             <ul>
                 <li>
@@ -64,155 +59,154 @@
             </ul>
         </nav>
     </header>
-<div class="carrossel">
-            <button class="carrossel-btn" id="prevBtn">&#10094;</button>
-            <img id="carrossel-img" src="imagens/4.png"lt="Sobre Nós" />
-            <button class="carrossel-btn" id="nextBtn">&#10095;</button>
-        </div>
+    <div class="carrossel">
+        <button class="carrossel-btn" id="prevBtn">&#10094;</button>
+        <img id="carrossel-img" src="imagens/1.png" alt="Imagem do Carrossel" />
+        <button class="carrossel-btn" id="nextBtn">&#10095;</button>
+    </div>
     <main>
         <section id="produtosEmDestaque">
             <div class="section-container">
-             <section id="produtosEmDestaque">
-    <h2>Produtos em Destaque</h2>
-    <div class="product-list">
-      <div class="product-item">
-        <h3>Vela de Ignição Bosch</h3>
-        <div class="product-img">
-          <img src="imagens/vela.png" alt="vela" class="img-vela" >
-          <img src="imagens/vela2.png" alt="vela ângulo diferente" class="secundaria" >
-          </div>
-          <p>Compatível com diversos modelos.</p>
-          <span>R$ 25,00</span>
-          <div class="butão">
-            <button onclick="comprar('Vela de Ignição Bosch')">comprar</button>
-          </div>
-        
-      </div>
-
-      <div class="product-item">
-        <h3>Pneu Aro 15 Michelin</h3>
-            <div class="conteiner">
-                <div class="slider-wraarper">
-                    <div class="card">
-            <div class="product-img">
-          <img src="imagens/pneu2.png" alt="pneu" class="img-pneu">
-          <img src="imagens/pneu.png.png" alt="pneu ângulo diferente" class="secundaria" >
-          </div>
-        </div>
-        </div>
-        </div>
-        <p>Alta durabilidade e performance.</p>
-        <span>R$ 350,00</span>
-         <div class="butão">
-            <button onclick="comprar('Pneu Aro 15 Michelin')">comprar</button>
-          </div>
-      </div>
-
-      <div class="product-item">
-        <h3>Amortecedor Cofap</h3>
-        <p>Para suspensão dianteira.</p>
-        <span>R$ 180,00</span>
-        <div class="butão">
-            <button onclick="comprar('Amortecedor Cofap')">comprar</button>
-          </div>
-      </div>
-
-      <div class="product-item">
-        <h3>Filtro de Óleo Fram</h3>
-        <p>Mantenha seu motor protegido.</p>
-        <span>R$ 45,00</span>
-        <div class="butão">
-            <button onclick="comprar('Filtro de Óleo Fram')">comprar</button>
-          </div>
-      </div>
-
-      <div class="product-item">
-        <h3>Lâmpada H7 Philips</h3>
-        <p>Maior visibilidade noturna.</p>
-        <span>R$ 60,00</span>
-        <div class="butão">
-            <button onclick="comprar('Lâmpada H7 Philips')">comprar</button>
-          </div>
-      </div>
-    </div>
-  </section>
-            </div>
-        </section>
-        
-        <section id="Motores">
-             <div class="section-container">
-                <h2>Motores</h2>
+                <h2>Produtos em Destaque</h2>
                 <div class="product-list">
-                    <div class="product-item">
-                        <h3>Kit de Motor Completo</h3>
-                        <p>Motor 1.6 a gasolina, pronto para instalar.</p>
-                        <span>R$ 4.500,00</span>
-                        <div class="butão">
-                            <button onclick="comprar('Kit de Motor Completo')">comprar</button>
-                          </div>
+                    <div class="product-item" data-details="Compatível com motores a gasolina e diesel. Alta durabilidade, material premium. Especificações: Irídio, 4 unidades por kit. Garantia: 6 meses.">
+                        <h3>Vela de Ignição Bosch</h3>
+                        <div class="product-img">
+                            <img src="imagens/vela.png" alt="Vela de Ignição Bosch" class="img-vela">
+                            <img src="imagens/vela2.png" alt="Vela ângulo diferente">
+                        </div>
+                        <p>Compatível com diversos modelos.</p>
+                        <span>R$ 25,00</span>
+                        <div class="botao">
+                            <button onclick="comprar('Vela de Ignição Bosch', 25, 'imagens/vela.png', this.parentElement.parentElement.dataset.details)">Comprar</button>
+                            <button class="btn-detalhes" onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
+                        </div>
                     </div>
-                     <div class="product-item">
-                        <h3>Bomba de Combustível</h3>
-                        <p>Para motores a diesel de alta performance.</p>
-                        <span>R$ 550,00</span>
-                        <div class="butão">
-                            <button onclick="comprar('Bomba de Combustível')">comprar</button>
-                          </div>
+                    <div class="product-item" data-details="Pneu radial com tecnologia anti-aquaplanagem. Medidas: 205/55 R15. Índice de carga: 91V. Garantia: 5 anos contra defeitos de fabricação.">
+                        <h3>Pneu Aro 15 Michelin</h3>
+                        <div class="product-img">
+                            <img src="imagens/pneu2.png" alt="Pneu Aro 15 Michelin">
+                            <img src="imagens/pneu.png" alt="Pneu ângulo diferente">
+                        </div>
+                        <p>Alta durabilidade e performance.</p>
+                        <span>R$ 350,00</span>
+                        <div class="botao">
+                            <button onclick="comprar('Pneu Aro 15 Michelin', 350, 'imagens/pneu2.png', this.parentElement.parentElement.dataset.details)">Comprar</button>
+                            <button class="btn-detalhes" onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
+                        </div>
+                    </div>
+                    <div class="product-item" data-details="Amortecedor pressurizado a gás. Compatível com veículos leves. Curso: 150mm. Garantia: 2 anos. Inclui kit de montagem.">
+                        <h3>Amortecedor Cofap</h3>
+                        <div class="product-img"></div>
+                        <p>Para suspensão dianteira.</p>
+                        <span>R$ 180,00</span>
+                        <div class="botao">
+                            <button onclick="comprar('Amortecedor Cofap', 180, '', this.parentElement.parentElement.dataset.details)">Comprar</button>
+                            <button class="btn-detalhes" onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
+                        </div>
+                    </div>
+                    <div class="product-item" data-details="Filtro com alta capacidade de retenção de impurezas. Compatível com motores até 2.0L. Material: Papel celulose. Garantia: 1 ano.">
+                        <h3>Filtro de Óleo Fram</h3>
+                        <div class="product-img"></div>
+                        <p>Mantenha seu motor protegido.</p>
+                        <span>R$ 45,00</span>
+                        <div class="botao">
+                            <button onclick="comprar('Filtro de Óleo Fram', 45, '', this.parentElement.parentElement.dataset.details)">Comprar</button>
+                            <button class="btn-detalhes" onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
+                        </div>
+                    </div>
+                    <div class="product-item" data-details="Lâmpada halógena com feixe de luz branca. Potência: 55W. Tensão: 12V. Garantia: 6 meses. Pacote com 2 unidades.">
+                        <h3>Lâmpada H7 Philips</h3>
+                        <div class="product-img"></div>
+                        <p>Maior visibilidade noturna.</p>
+                        <span>R$ 60,00</span>
+                        <div class="botao">
+                            <button onclick="comprar('Lâmpada H7 Philips', 60, '', this.parentElement.parentElement.dataset.details)">Comprar</button>
+                            <button class="btn-detalhes" onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
+        <section id="Motores">
+            <div class="section-container">
+                <h2>Motores</h2>
+                <div class="product-list">
+                    <div class="product-item" data-details="Kit completo incluindo bloco, cabeçote e periféricos. Potência: 120HP. Torque: 160Nm. Garantia: 3 anos. Compatível com veículos nacionais.">
+                        <h3>Kit de Motor Completo</h3>
+                        <div class="product-img"></div>
+                        <p>Motor 1.6 a gasolina, pronto para instalar.</p>
+                        <span>R$ 4.500,00</span>
+                        <div class="botao">
+                            <button onclick="comprar('Kit de Motor Completo', 4500, '', this.parentElement.parentElement.dataset.details)">Comprar</button>
+                            <button class="btn-detalhes" onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
+                        </div>
+                    </div>
+                    <div class="product-item" data-details="Bomba de alta pressão com vazão de 100L/h. Material: Aço inoxidável. Garantia: 1 ano. Inclui filtros.">
+                        <h3>Bomba de Combustível</h3>
+                        <div class="product-img"></div>
+                        <p>Para motores a diesel de alta performance.</p>
+                        <span>R$ 550,00</span>
+                        <div class="botao">
+                            <button onclick="comprar('Bomba de Combustível', 550, '', this.parentElement.parentElement.dataset.details)">Comprar</button>
+                            <button class="btn-detalhes" onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section id="Pneus">
             <div class="section-container">
                 <h2>Pneus</h2>
                 <div class="product-list">
-                    <div class="product-item">
+                    <div class="product-item" data-details="Pneu esportivo com aderência superior. Medidas: 225/45 R17. Índice de velocidade: W. Garantia: 5 anos.">
                         <h3>Pneu Aro 17 Pirelli</h3>
+                        <div class="product-img"></div>
                         <p>Segurança e estabilidade em pista molhada.</p>
                         <span>R$ 480,00</span>
-                        <div class="butão">
-                            <button onclick="comprar('Pneu Aro 17 Pirelli')">comprar</button>
-                          </div>
+                        <div class="botao">
+                            <button onclick="comprar('Pneu Aro 17 Pirelli', 480, '', this.parentElement.parentElement.dataset.details)">Comprar</button>
+                            <button class="btn-detalhes" onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
         <section id="Autopeças">
             <div class="section-container">
                 <h2>Autopeças</h2>
                 <div class="product-list">
-                    <div class="product-item">
+                    <div class="product-item" data-details="Kit com 4 pastilhas e 2 discos ventilados. Material: Cerâmica. Garantia: 2 anos. Reduz ruído e poeira.">
                         <h3>Kit de Freio a Disco</h3>
+                        <div class="product-img"></div>
                         <p>Pastilhas e discos para maior segurança.</p>
                         <span>R$ 250,00</span>
-                        <div class="butão">
-                            <button onclick="comprar('Kit de Freio a Disco')">comprar</button>
-                          </div>
+                        <div class="botao">
+                            <button onclick="comprar('Kit de Freio a Disco', 250, '', this.parentElement.parentElement.dataset.details)">Comprar</button>
+                            <button class="btn-detalhes" onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        
         <section id="AmortecedoreseSuspensões">
             <div class="section-container">
                 <h2>Amortecedores e Suspensões</h2>
-                 <div class="product-list">
-                    <div class="product-item">
+                <div class="product-list">
+                    <div class="product-item" data-details="Kit ajustável com molas e amortecedores. Faixa de ajuste: 30-60mm. Material: Aço temperado. Garantia: 3 anos.">
                         <h3>Kit de Suspensão a Rosca</h3>
+                        <div class="product-img"></div>
                         <p>Ajuste a altura do seu veículo com precisão.</p>
                         <span>R$ 900,00</span>
-                        <div class="butão">
-                            <button onclick="comprar('Kit de Suspensão a Rosca')">comprar</button>
-                          </div>
+                        <div class="botao">
+                            <button onclick="comprar('Kit de Suspensão a Rosca', 900, '', this.parentElement.parentElement.dataset.details)">Comprar</button>
+                            <button class="btn-detalhes" onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
     </main>
-
     <div class="modal" id="loginModal">
         <div class="modal-content">
             <span class="close-btn" id="closeModal">&times;</span>
@@ -239,11 +233,34 @@
             </div>
         </div>
     </div>
-
-    <!-- Elemento para notificação (toast) -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="fecharModal('cartModal')">&times;</span>
+            <h2>Seu Carrinho</h2>
+            <ul id="cartItems"></ul>
+            <p id="cartTotal">Total: R$ 0,00</p>
+            <div class="cart-actions">
+                <button onclick="limparCarrinho()">Limpar Carrinho</button>
+                <button onclick="prosseguirCompra()">Prosseguir para Compra</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="productDetailsModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="fecharModal('productDetailsModal')">&times;</span>
+            <img id="detailImg" class="product-detail-img" src="" alt="Imagem do Produto">
+            <h3 id="detailTitle"></h3>
+            <p id="detailDesc"></p>
+            <span id="detailPrice" class="price"></span>
+            <div class="specs">
+                <h4>Especificações</h4>
+                <ul id="detailSpecs"></ul>
+            </div>
+            <button onclick="comprarDoModal()">Adicionar ao Carrinho</button>
+        </div>
+    </div>
     <div id="toast" class="toast"></div>
-
     <script src="script.js"></script>
-
 </body>
+
 </html>
