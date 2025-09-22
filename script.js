@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- LÓGICA DO SLIDER DE IMAGENS NOS PRODUTOS ---
     document.querySelectorAll(".product-img").forEach(container => {
         const imgs = container.querySelectorAll("img");
-        if (imgs.length > 1) {
+        if (imgs.length > 0) {
             let index = 0;
             imgs[0].classList.add("ativa");
 
