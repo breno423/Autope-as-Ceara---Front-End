@@ -10,12 +10,13 @@ html {
 
 body {
     font-family: 'Roboto Condensed', sans-serif;
-    line-height: 1.5; 
+    line-height: 1.5; /* Reduzido de 1.6 */
     background-image: url('imagens/unnamed (2).png');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
+    color: #343a40;
 }
 
 header {
@@ -24,42 +25,42 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); /* Reduzido de 4px/10px */
 }
 
 .header-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1100px; 
+    max-width: 1100px; /* Reduzido de 1300px */
     margin: 0 auto;
-    padding: 8px 15px; 
+    padding: 8px 15px; /* Reduzido de 10px/20px */
 }
 
 .logo {
-    height: 50px; 
+    height: 50px; /* Reduzido de 70px */
     width: auto;
     object-fit: contain;
 }
 
 .search-box {
     flex: 1;
-    max-width: 400px; 
+    max-width: 400px; /* Reduzido de 500px */
     display: flex;
     align-items: center;
-    margin: 0 20px; 
+    margin: 0 20px; /* Reduzido de 30px */
     background: #ffffff;
-    border-radius: 20px; 
-    padding: 4px; 
+    border-radius: 20px; /* Reduzido de 25px */
+    padding: 4px; /* Reduzido de 5px */
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 }
 
 .search-input {
     flex: 1;
-    padding: 6px 12px; 
+    padding: 6px 12px; /* Reduzido de 8px/15px */
     border: none;
     outline: none;
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* Reduzido de 1rem */
     background: transparent;
     color: #343a40;
     font-family: 'Roboto Condensed', sans-serif;
@@ -67,48 +68,48 @@ header {
 
 .search-icon {
     color: #6c757d;
-    padding: 4px;
+    padding: 4px; /* Reduzido de 5px */
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* Reduzido de 1.1rem */
 }
 
 .header-right {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 15px; /* Reduzido de 20px */
 }
 
 .login-btn {
-    padding: 8px 15px;
+    padding: 8px 15px; /* Reduzido de 10px/20px */
     background-color: #B00000;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 5px; /* Reduzido de 6px */
     cursor: pointer;
     font-weight: 700;
     transition: background-color 0.3s ease, transform 0.2s ease;
     text-transform: uppercase;
-    letter-spacing: 0.8px;
-    font-size: 0.9rem;
+    letter-spacing: 0.8px; /* Reduzido de 1px */
+    font-size: 0.9rem; /* Adicionado para reduzir tamanho da fonte */
 }
 
 .login-btn:hover {
     background-color: #8B0000;
-    transform: scale(1.03);
+    transform: scale(1.03); /* Reduzido de 1.05 */
 }
 
 .saudacao-usuario {
     background-color: transparent;
-    font-size: 0.9em;
+    font-size: 0.9em; /* Reduzido de 1.1em */
     font-weight: 700;
     color: #FFD700;
-    margin-left: 10px;
+    margin-left: 10px; /* Reduzido de 15px */
 }
 
 .cart-icon {
     position: relative;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Reduzido de 1.5rem */
     color: #fff;
 }
 
@@ -122,15 +123,15 @@ header {
 
 #cart-count {
     position: absolute;
-    top: -8px;
-    right: -8px;
+    top: -8px; /* Reduzido de -10px */
+    right: -8px; /* Reduzido de -10px */
     background-color: #B00000;
     color: #fff;
     border-radius: 50%;
-    padding: 2px 5px;
-    font-size: 0.7rem;
+    padding: 2px 5px; /* Reduzido de 2px/6px */
+    font-size: 0.7rem; /* Reduzido de 0.8rem */
     font-weight: bold;
-    min-width: 15px;
+    min-width: 15px; /* Reduzido de 18px */
     text-align: center;
 }
 
@@ -143,8 +144,8 @@ header {
     display: flex;
     justify-content: center;
     list-style: none;
-    gap: 25px;
-    padding: 12px 0;
+    gap: 25px; /* Reduzido de 35px */
+    padding: 12px 0; /* Reduzido de 15px */
     margin: 0;
 }
 
@@ -152,27 +153,27 @@ header {
     text-decoration: none;
     color: #e9ecef;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.95rem; /* Reduzido de 1.1rem */
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 4px;
+    gap: 6px; /* Reduzido de 8px */
+    padding: 8px 4px; /* Reduzido de 10px/5px */
     position: relative;
     transition: color 0.3s ease;
     text-transform: uppercase;
-    letter-spacing: 0.8px;
+    letter-spacing: 0.8px; /* Reduzido de 1px */
 }
 
 .header-bottom ul li a::after {
     content: '';
     position: absolute;
     width: 0;
-    height: 2px;
+    height: 2px; /* Reduzido de 3px */
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     background-color: #FF8C00;
-    border-radius: 1px;
+    border-radius: 1px; /* Reduzido de 2px */
     transition: width 0.4s ease;
 }
 
@@ -193,13 +194,13 @@ header {
     position: absolute;
     top: 110%;
     left: 50%;
-    transform: translateX(-50%) translateY(8px);
+    transform: translateX(-50%) translateY(8px); /* Reduzido de 10px */
     background-color: #343a40;
     list-style: none;
-    padding: 8px;
-    border-radius: 6px;
-    box-shadow: 0px 6px 12px rgba(0,0,0,0.6);
-    min-width: 200px;
+    padding: 8px; /* Reduzido de 10px */
+    border-radius: 6px; /* Reduzido de 8px */
+    box-shadow: 0px 6px 12px rgba(0,0,0,0.6); /* Reduzido de 8px/16px */
+    min-width: 200px; /* Reduzido de 240px */
     z-index: 10;
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
@@ -212,12 +213,12 @@ nav > ul > li:hover > .submenu {
 
 .submenu li a {
     color: #e9ecef;
-    padding: 8px 12px;
+    padding: 8px 12px; /* Reduzido de 10px/15px */
     display: block;
     text-align: left;
     white-space: nowrap;
-    border-radius: 4px;
-    font-size: 0.9rem;
+    border-radius: 4px; /* Reduzido de 5px */
+    font-size: 0.9rem; /* Reduzido de 1rem */
     text-transform: none;
     letter-spacing: normal;
     font-weight: 400;
@@ -233,48 +234,48 @@ nav > ul > li:hover > .submenu {
 }
 
 main {
-    padding: 40px 0;
+    padding: 40px 0; /* Reduzido de 50px */
 }
 
 section {
-    padding: 50px 15px;
+    padding: 50px 15px; /* Reduzido de 60px/20px */
 }
 
 .section-container {
-    max-width: 1000px;
+    max-width: 1000px; /* Reduzido de 1200px */
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.95);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    padding: 30px; /* Reduzido de 40px */
+    border-radius: 10px; /* Reduzido de 12px */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* Reduzido de 10px/30px */
 }
 
 section h2 {
-    font-size: 2.5rem;
+    font-size: 2.5rem; /* Reduzido de 3rem */
     color: #212529;
     text-align: center;
-    margin-bottom: 40px;
-    border-bottom: 3px solid #B00000;
-    padding-bottom: 15px;
+    margin-bottom: 40px; /* Reduzido de 50px */
+    border-bottom: 3px solid #B00000; /* Reduzido de 4px */
+    padding-bottom: 15px; /* Reduzido de 20px */
     text-transform: uppercase;
-    letter-spacing: 1.2px;
+    letter-spacing: 1.2px; /* Reduzido de 1.5px */
     font-weight: 700;
 }
 
 .product-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Reduzido de 280px */
+    gap: 25px; /* Reduzido de 30px */
 }
 
 .product-item {
     background-color: rgba(128, 128, 128, 0.5);
     border: 1px solid #ced4da;
-    border-top: 5px solid #B00000;
-    border-radius: 6px;
-    padding: 20px;
+    border-top: 5px solid #B00000; /* Reduzido de 6px */
+    border-radius: 6px; /* Reduzido de 8px */
+    padding: 20px; /* Reduzido de 25px */
     text-align: center;
-    box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.1); /* Reduzido de 6px/15px */
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -282,7 +283,7 @@ section h2 {
 }
 
 .product-item:hover {
-    transform: translateY(-8px);
+    transform: translateY(-8px); /* Reduzido de -10px */
     box-shadow: 0 12px 25px rgba(0,0,0,0.2); /* Reduzido de 15px/30px */
     border-color: #FF8C00;
 }
@@ -510,8 +511,8 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px; 
-    margin: 25px 0; 
+    gap: 8px; /* Reduzido de 10px */
+    margin: 25px 0; /* Reduzido de 30px */
 }
 
     body {
