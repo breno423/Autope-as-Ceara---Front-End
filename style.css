@@ -450,6 +450,7 @@ button {
     height: 190px; /* Reduzido de 200px */
     overflow: hidden;
     margin: 0 auto;
+   bottom: 15px;
 }
 
 .product-img img {
@@ -475,18 +476,18 @@ button {
     background-color: rgba(145, 4, 4, 0.938);
     color: rgb(255, 255, 255);
     border: none;
-    padding: 4px 8px; /* Reduzido de 5px/10px */
+    padding: 4px 8px; 
     cursor: pointer;
-    border-radius: 2px; /* Reduzido de 3px */
+    border-radius: 2px; 
     z-index: 10;
 }
 
 .product-img .prev {
-    left: 4px; /* Reduzido de 5px */
+    left: 4px; 
 }
 
 .product-img .next {
-    right: 4px; /* Reduzido de 5px */
+    right: 4px; 
 }
 
 .toast {
