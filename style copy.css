@@ -1,0 +1,190 @@
+/* ===========================================
+   ESTILO GERAL
+=========================================== */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container padrão */
+.box {
+    width: 450px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+    transition: 0.3s;
+}
+
+.box:hover {
+    transform: translateY(-2px);
+}
+
+/* Títulos */
+h2 {
+    margin-top: 0;
+    font-size: 22px;
+    color: #222;
+    font-weight: bold;
+    text-align: center;
+}
+
+h3 {
+    margin-bottom: 6px;
+    color: #222;
+}
+
+/* Inputs, selects e textarea */
+input, textarea, button, select {
+    width: 100%;
+    padding: 11px;
+    margin: 10px 0px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    border: 1px solid #cbd3dd;
+    font-size: 15px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Foco */
+input:focus, textarea:focus, select:focus {
+    border-color: #0066ff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 102, 255, 0.3);
+}
+
+/* Botões */
+button {
+    background: #0066ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.25s;
+}
+
+button:hover {
+    background: #004acc;
+}
+
+/* Botão vermelho */
+.btn-danger {
+    background: #d9534f !important;
+}
+
+.btn-danger:hover {
+    background: #b43835 !important;
+}
+
+/* ===========================================
+   LOGIN
+=========================================== */
+#loginBox button {
+    margin-top: 15px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* ===========================================
+   PAINEL ADMIN
+=========================================== */
+
+.top-btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-btns button,
+.top-btns a button {
+    width: 48%;
+    background: #222;
+    font-weight: bold;
+}
+
+.top-btns button:hover,
+.top-btns a button:hover {
+    background: #444;
+}
+
+/* ===========================================
+   PRÉ-VISUALIZAÇÃO DAS IMAGENS
+=========================================== */
+
+#previewContainer {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#previewContainer img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #e5e5e5;
+    transition: 0.2s;
+}
+
+#previewContainer img:hover {
+    border-color: #0066ff;
+    transform: scale(1.05);
+}
+
+/* ===========================================
+   LISTAGEM DOS PRODUTOS
+=========================================== */
+
+#listaProdutos {
+    margin-top: 20px;
+}
+
+.produto-admin {
+    padding: 15px;
+    border-radius: 10px;
+    background: #ffffff;
+    border: 1px solid #d8dde6;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    transition: 0.2s;
+}
+
+.produto-admin:hover {
+    transform: translateY(-2px);
+}
+
+.produto-admin img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-right: 6px;
+}
+
+.produto-admin h3 {
+    margin-bottom: 3px;
+}
+
+.produto-admin p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.produto-admin button {
+    margin-top: 10px;
+    width: 100%;
+    font-weight: bold;
+    background: #d9534f;
+}
+
+.produto-admin button:hover {
+    background: #b43835;
+}

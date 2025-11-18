@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - AutoPeças Maia</title>
+<link rel="stylesheet" href="style copy.css">
+    <style>
+        body {
+            font-family: Arial;
+            background: #f3f3f3;
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            width: 420px;
+            margin: 40px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        input, textarea, button, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        #painel { display: none; }
+
+        #previewContainer img {
+            width: 90px;
+            margin: 5px;
+            border-radius: 6px;
+            display: inline-block;
+            border: 1px solid #999;
+        }
+
+        .produto-admin {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 10px;
+            background: #fff;
+        }
+
+        .produto-admin img { 
+            width: 80px; 
+            border-radius: 4px; 
+            margin-bottom: 5px; 
+        }
+
+        .top-btns {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .top-btns a button, 
+        .top-btns button {
+            width: 48%;
+        }
+
+        h3 { margin-bottom: 5px; }
+    </style>
+</head>
+
+<body>
+
+    <!-- LOGIN ADMIN -->
+    <div class="box" id="loginBox">
+        <h2>Login de Administrador</h2>
+
+        <input type="text" id="adminUser" placeholder="Usuário">
+        <input type="password" id="adminPass" placeholder="Senha">
+
+        <button onclick="fazerLogin()">Entrar</button>
+
+        <p style="font-size:14px;color:#666">
+            Usuário: admin | Senha: 1234
+        </p>
+    </div>
+
+    <!-- PAINEL -->
+    <div id="painel" class="box">
+
+        <div class="top-btns">
+            <a href="index.html"><button>Voltar ao Site</button></a>
+            <button onclick="toggleCadastro()">Cadastrar Produto</button>
+        </div>
+
+        <!-- CADASTRO -->
+        <div id="cadastroBox">
+            <h2>Cadastrar Novo Produto</h2>
+
+            <label><b>Imagens do Produto (1 ou mais):</b></label>
+            <input type="file" id="imgProduto" accept="image/*" multiple>
+            <div id="previewContainer"></div>
+
+            <label><b>Categoria:</b></label>
+            <select id="categoriaProduto">
+                <option value="destaque">Destaques</option>
+                <option value="motores">Motores</option>
+                <option value="pneus">Pneus</option>
+                <option value="autopecas">Autopeças</option>
+                <option value="suspensao">Suspensão</option>
+            </select>
+
+            <input type="text" id="nomeProduto" placeholder="Nome do Produto">
+            <input type="number" id="precoProduto" placeholder="Preço (R$)" step="0.01">
+            <input type="number" id="qtdProduto" placeholder="Quantidade">
+
+            <input type="text" id="descProduto" placeholder="Descrição curta">
+
+            <textarea id="detalhesProduto" placeholder="Detalhes técnicos"></textarea>
+
+            <button onclick="salvarProduto()">Salvar Produto</button>
+
+            <p id="msg" style="color:green;"></p>
+        </div>
+
+        <!-- LISTA -->
+        <div id="listaProdutos">
+            <h2>Produtos Cadastrados</h2>
+        </div>
+
+    </div>
+
+<script>
+/* ============================================================
+   LOGIN
+============================================================ */
+const USER = "admin";
+const PASS = "1234";
+
+function fazerLogin() {
+    const user = document.getElementById("adminUser").value;
+    const pass = document.getElementById("adminPass").value;
+
+    if (user === USER && pass === PASS) {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("painel").style.display = "block";
+        carregarProdutos();
+    } else {
+        alert("Usuário ou senha incorretos.");
+    }
+}
+
+/* ============================================================
+   FUNÇÃO DE COMPRESSÃO
+============================================================ */
+function comprimirImagem(base64, qualidade = 0.4) {
+    return new Promise(resolve => {
+        let img = new Image();
+        img.src = base64;
+
+        img.onload = function () {
+            let canvas = document.createElement("canvas");
+            let ctx = canvas.getContext("2d");
+
+            canvas.width = img.width;
+            canvas.height = img.height;
+
+            ctx.drawImage(img, 0, 0);
+
+            // retorna imagem comprimida
+            resolve(canvas.toDataURL("image/jpeg", qualidade));
+        };
+    });
+}
+
+/* ============================================================
+   UPLOAD + COMPRESSÃO + PREVIEW
+============================================================ */
+let imagensBase64 = [];
+
+document.getElementById("imgProduto").addEventListener("change", async function () {
+    imagensBase64 = [];
+    document.getElementById("previewContainer").innerHTML = "";
+
+    for (const file of this.files) {
+        const reader = new FileReader();
+
+        reader.onload = async function () {
+            const comprimida = await comprimirImagem(reader.result, 0.4);
+
+            imagensBase64.push(comprimida);
+
+            let img = document.createElement("img");
+            img.src = comprimida;
+
+            document.getElementById("previewContainer").appendChild(img);
+        };
+
+        reader.readAsDataURL(file);
+    }
+});
+
+/* ============================================================
+   SALVAR PRODUTO
+============================================================ */
+function salvarProduto() {
+
+    const categoria = document.getElementById("categoriaProduto").value;
+    const nome = document.getElementById("nomeProduto").value;
+    const preco = document.getElementById("precoProduto").value;
+    const qtd = document.getElementById("qtdProduto").value;
+    const desc = document.getElementById("descProduto").value;
+    const detalhes = document.getElementById("detalhesProduto").value;
+
+    if (!nome || !preco || !qtd || imagensBase64.length === 0) {
+        alert("Preencha todos os campos obrigatórios!");
+        return;
+    }
+
+    const produto = {
+        id: Date.now(),
+        nome,
+        preco,
+        quantidade: qtd,
+        descricao: desc,
+        detalhes,
+        imagens: imagensBase64,
+        categoria: categoria
+    };
+
+    let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+    produtos.push(produto);
+
+    localStorage.setItem("produtos", JSON.stringify(produtos));
+
+    document.getElementById("msg").textContent = "Produto salvo com sucesso!";
+
+    limparCampos();
+    carregarProdutos();
+}
+
+function limparCampos() {
+    document.getElementById("nomeProduto").value = "";
+    document.getElementById("precoProduto").value = "";
+    document.getElementById("qtdProduto").value = "";
+    document.getElementById("descProduto").value = "";
+    document.getElementById("detalhesProduto").value = "";
+    document.getElementById("previewContainer").innerHTML = "";
+    imagensBase64 = [];
+}
+
+/* ============================================================
+   LISTAR PRODUTOS
+============================================================ */
+function carregarProdutos() {
+    const lista = document.getElementById("listaProdutos");
+    lista.innerHTML = "<h2>Produtos Cadastrados</h2>";
+
+    const produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+
+    produtos.forEach(prod => {
+
+        const div = document.createElement("div");
+        div.classList.add("produto-admin");
+
+        let miniImgs = "";
+        prod.imagens.forEach(img => {
+            miniImgs += `<img src='${img}'>`;
+        });
+
+        div.innerHTML = `
+            ${miniImgs}
+            <h3>${prod.nome}</h3>
+            <p><b>Categoria:</b> ${prod.categoria}</p>
+            <p>${prod.descricao}</p>
+            <p><b>Preço:</b> R$ ${parseFloat(prod.preco).toFixed(2)}</p>
+            <button onclick="removerProduto(${prod.id})" style="background:#d9534f;color:white">
+                Remover
+            </button>
+        `;
+
+        lista.appendChild(div);
+    });
+}
+
+/* ============================================================
+   REMOVER PRODUTO
+============================================================ */
+function removerProduto(id) {
+    let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+    produtos = produtos.filter(p => p.id !== id);
+
+    localStorage.setItem("produtos", JSON.stringify(produtos));
+
+    carregarProdutos();
+    alert("Produto removido!");
+}
+
+/* ============================================================
+   MOSTRAR OU OCULTAR CADASTRO
+============================================================ */
+function toggleCadastro() {
+    const box = document.getElementById("cadastroBox");
+    box.style.display = box.style.display === "none" ? "block" : "none";
+}
+</script>
+
+</body>
+</html>
