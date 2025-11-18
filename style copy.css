@@ -3,7 +3,7 @@
 =========================================== */
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background: #f5f7fa;
+    background: #f5f5f5; /* cinza muito claro */
     margin: 0;
     padding: 0;
 }
@@ -12,9 +12,10 @@ body {
 .box {
     width: 450px;
     margin: 40px auto;
-    background: #ffffff;
+    background: #ffffff; /* branco */
     padding: 25px;
     border-radius: 12px;
+    border: 1px solid #c0c0c0; /* cinza médio */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
     transition: 0.3s;
 }
@@ -27,14 +28,14 @@ body {
 h2 {
     margin-top: 0;
     font-size: 22px;
-    color: #222;
+    color: #000; /* preto */
     font-weight: bold;
     text-align: center;
 }
 
 h3 {
     margin-bottom: 6px;
-    color: #222;
+    color: #111; /* quase preto */
 }
 
 /* Inputs, selects e textarea */
@@ -44,7 +45,7 @@ input, textarea, button, select {
     margin: 10px 0px;
     box-sizing: border-box;
     border-radius: 8px;
-    border: 1px solid #cbd3dd;
+    border: 1px solid #c0c0c0; /* cinza */
     font-size: 15px;
 }
 
@@ -55,14 +56,14 @@ textarea {
 
 /* Foco */
 input:focus, textarea:focus, select:focus {
-    border-color: #0066ff;
+    border-color: #d60000; /* vermelho */
     outline: none;
-    box-shadow: 0 0 4px rgba(0, 102, 255, 0.3);
+    box-shadow: 0 0 4px rgba(214, 0, 0, 0.4);
 }
 
-/* Botões */
+/* Botões padrão */
 button {
-    background: #0066ff;
+    background: #111; /* preto */
     color: white;
     border: none;
     cursor: pointer;
@@ -71,16 +72,16 @@ button {
 }
 
 button:hover {
-    background: #004acc;
+    background: #333; /* cinza escuro */
 }
 
 /* Botão vermelho */
 .btn-danger {
-    background: #d9534f !important;
+    background: #d60000 !important; /* vermelho */
 }
 
 .btn-danger:hover {
-    background: #b43835 !important;
+    background: #b30000 !important; /* vermelho escuro */
 }
 
 /* ===========================================
@@ -104,13 +105,13 @@ button:hover {
 .top-btns button,
 .top-btns a button {
     width: 48%;
-    background: #222;
+    background: #000; /* preto */
     font-weight: bold;
 }
 
 .top-btns button:hover,
 .top-btns a button:hover {
-    background: #444;
+    background: #333; /* cinza escuro */
 }
 
 /* ===========================================
@@ -129,12 +130,12 @@ button:hover {
     height: 90px;
     object-fit: cover;
     border-radius: 8px;
-    border: 2px solid #e5e5e5;
+    border: 2px solid #e5e5e5; /* cinza claro */
     transition: 0.2s;
 }
 
 #previewContainer img:hover {
-    border-color: #0066ff;
+    border-color: #d60000; /* vermelho */
     transform: scale(1.05);
 }
 
@@ -149,8 +150,8 @@ button:hover {
 .produto-admin {
     padding: 15px;
     border-radius: 10px;
-    background: #ffffff;
-    border: 1px solid #d8dde6;
+    background: #ffffff; /* branco */
+    border: 1px solid #c0c0c0; /* cinza médio */
     margin-bottom: 15px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
     transition: 0.2s;
@@ -165,26 +166,27 @@ button:hover {
     height: 80px;
     object-fit: cover;
     border-radius: 6px;
-    border: 1px solid #ccc;
+    border: 1px solid #c0c0c0; /* cinza */
     margin-right: 6px;
 }
 
 .produto-admin h3 {
     margin-bottom: 3px;
+    color: #111; /* preto */
 }
 
 .produto-admin p {
     margin: 5px 0;
-    color: #555;
+    color: #555; /* cinza escuro */
 }
 
 .produto-admin button {
     margin-top: 10px;
     width: 100%;
     font-weight: bold;
-    background: #d9534f;
+    background: #d60000; /* vermelho */
 }
 
 .produto-admin button:hover {
-    background: #b43835;
+    background: #b30000; /* vermelho mais escuro */
 }
