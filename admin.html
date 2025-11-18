@@ -8,9 +8,23 @@
         .box { width: 380px; margin: 40px auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.2); }
         input, textarea, button { width: 100%; padding: 10px; margin: 10px 0; }
         #painel { display: none; }
-        img.preview { width: 120px; display: none; margin-bottom: 10px; border-radius: 6px; }
-        .produto-admin { border: 1px solid #ddd; padding: 10px; border-radius: 6px; margin-top: 10px; }
+
+        #previewContainer img {
+            width: 90px;
+            margin: 5px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .produto-admin {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
         .produto-admin img { width: 80px; border-radius: 4px; margin-bottom: 5px; }
+
         .top-btns { display: flex; justify-content: space-between; margin-bottom: 10px; }
         .top-btns a, .top-btns button { width: 48%; }
         h3 { margin-bottom: 5px; }
@@ -39,8 +53,8 @@
         <div id="cadastroBox">
             <h2>Cadastrar Novo Produto</h2>
 
-            <input type="file" id="imgProduto" accept="image/*">
-            <img id="previewProduto" class="preview">
+            <input type="file" id="imgProduto" accept="image/*" multiple>
+            <div id="previewContainer"></div>
 
             <input type="text" id="nomeProduto" placeholder="Nome do Produto">
             <input type="number" id="precoProduto" placeholder="Preço (R$)" step="0.01">
@@ -78,20 +92,25 @@
     }
 
     // --- CADASTRO ---
-    let imgBase64 = "";
+    let imagensBase64 = [];
 
     document.getElementById("imgProduto").addEventListener("change", function() {
-        const file = this.files[0];
-        const reader = new FileReader();
+        imagensBase64 = [];
+        document.getElementById("previewContainer").innerHTML = "";
 
-        reader.onload = function() {
-            imgBase64 = reader.result;
-            const preview = document.getElementById("previewProduto");
-            preview.src = imgBase64;
-            preview.style.display = "block";
-        };
+        [...this.files].forEach(file => {
+            const reader = new FileReader();
 
-        if (file) reader.readAsDataURL(file);
+            reader.onload = function() {
+                imagensBase64.push(reader.result);
+
+                let img = document.createElement("img");
+                img.src = reader.result;
+                document.getElementById("previewContainer").appendChild(img);
+            };
+
+            if (file) reader.readAsDataURL(file);
+        });
     });
 
     function salvarProduto() {
@@ -101,19 +120,19 @@
         const desc = document.getElementById("descProduto").value;
         const detalhes = document.getElementById("detalhesProduto").value;
 
-        if (!nome || !preco || !qtd || !imgBase64) {
+        if (!nome || !preco || !qtd || imagensBase64.length === 0) {
             alert("Preencha os campos obrigatórios!");
             return;
         }
 
         const produto = {
-            id: Date.now(), // Identificador único
+            id: Date.now(),
             nome,
             preco,
             quantidade: qtd,
             descricao: desc,
             detalhes,
-            imagem: imgBase64
+            imagens: imagensBase64
         };
 
         let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
@@ -126,15 +145,14 @@
         carregarProdutos();
     }
 
-    // Limpar após cadastro
     function limparCampos() {
         document.getElementById("nomeProduto").value = "";
         document.getElementById("precoProduto").value = "";
         document.getElementById("qtdProduto").value = "";
         document.getElementById("descProduto").value = "";
         document.getElementById("detalhesProduto").value = "";
-        document.getElementById("previewProduto").style.display = "none";
-        imgBase64 = "";
+        document.getElementById("previewContainer").innerHTML = "";
+        imagensBase64 = [];
     }
 
     // --- LISTAR PRODUTOS ---
@@ -149,11 +167,18 @@
             const div = document.createElement("div");
             div.classList.add("produto-admin");
 
+            let miniImgs = "";
+            if (Array.isArray(prod.imagens)) {
+                prod.imagens.forEach(img => {
+                    miniImgs += `<img src="${img}">`;
+                });
+            }
+
             div.innerHTML = `
-                <img src="${prod.imagem}">
+                ${miniImgs}
                 <h3>${prod.nome}</h3>
-                <p>${prod.descricao}</p>
-                <p><strong>Preço:</strong> R$ ${parseFloat(prod.preco).toFixed(2)}</p>
+                <p>${prod.descricao || ""}</p>
+                <p><strong>Preço:</strong> R$ ${parseFloat(prod.preco || 0).toFixed(2)}</p>
                 <button onclick="removerProduto(${prod.id})" style="background:#d9534f;color:white;">Remover</button>
             `;
 
