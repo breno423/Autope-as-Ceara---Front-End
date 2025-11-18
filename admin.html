@@ -78,7 +78,7 @@
         <button onclick="fazerLogin()">Entrar</button>
 
         <p style="font-size:14px;color:#666">
-            Usuário: <b></b> | Senha: <b></b>
+            Usuário: admin | Senha: 1234
         </p>
     </div>
 
@@ -128,153 +128,178 @@
     </div>
 
 <script>
-    /* ============================================================
-       LOGIN
-    ============================================================ */
-    const USER = "admin";
-    const PASS = "1234";
+/* ============================================================
+   LOGIN
+============================================================ */
+const USER = "admin";
+const PASS = "1234";
 
-    function fazerLogin() {
-        const user = document.getElementById("adminUser").value;
-        const pass = document.getElementById("adminPass").value;
+function fazerLogin() {
+    const user = document.getElementById("adminUser").value;
+    const pass = document.getElementById("adminPass").value;
 
-        if (user === USER && pass === PASS) {
-            document.getElementById("loginBox").style.display = "none";
-            document.getElementById("painel").style.display = "block";
-            carregarProdutos();
-        } else {
-            alert("Usuário ou senha incorretos.");
-        }
+    if (user === USER && pass === PASS) {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("painel").style.display = "block";
+        carregarProdutos();
+    } else {
+        alert("Usuário ou senha incorretos.");
     }
+}
 
-    /* ============================================================
-       UPLOAD E PREVIEW DAS IMAGENS
-    ============================================================ */
-    let imagensBase64 = [];
+/* ============================================================
+   FUNÇÃO DE COMPRESSÃO
+============================================================ */
+function comprimirImagem(base64, qualidade = 0.4) {
+    return new Promise(resolve => {
+        let img = new Image();
+        img.src = base64;
 
-    document.getElementById("imgProduto").addEventListener("change", function () {
-        imagensBase64 = [];
-        document.getElementById("previewContainer").innerHTML = "";
+        img.onload = function () {
+            let canvas = document.createElement("canvas");
+            let ctx = canvas.getContext("2d");
 
-        [...this.files].forEach(file => {
-            const reader = new FileReader();
+            canvas.width = img.width;
+            canvas.height = img.height;
 
-            reader.onload = function () {
-                imagensBase64.push(reader.result);
+            ctx.drawImage(img, 0, 0);
 
-                let img = document.createElement("img");
-                img.src = reader.result;
-
-                document.getElementById("previewContainer").appendChild(img);
-            };
-
-            if (file) reader.readAsDataURL(file);
-        });
+            // retorna imagem comprimida
+            resolve(canvas.toDataURL("image/jpeg", qualidade));
+        };
     });
+}
 
-    /* ============================================================
-       SALVAR PRODUTO
-    ============================================================ */
-    function salvarProduto() {
+/* ============================================================
+   UPLOAD + COMPRESSÃO + PREVIEW
+============================================================ */
+let imagensBase64 = [];
 
-        const categoria = document.getElementById("categoriaProduto").value;
-        const nome = document.getElementById("nomeProduto").value;
-        const preco = document.getElementById("precoProduto").value;
-        const qtd = document.getElementById("qtdProduto").value;
-        const desc = document.getElementById("descProduto").value;
-        const detalhes = document.getElementById("detalhesProduto").value;
+document.getElementById("imgProduto").addEventListener("change", async function () {
+    imagensBase64 = [];
+    document.getElementById("previewContainer").innerHTML = "";
 
-        if (!nome || !preco || !qtd || imagensBase64.length === 0) {
-            alert("Preencha todos os campos obrigatórios!");
-            return;
-        }
+    for (const file of this.files) {
+        const reader = new FileReader();
 
-        const produto = {
-            id: Date.now(),
-            nome,
-            preco,
-            quantidade: qtd,
-            descricao: desc,
-            detalhes,
-            imagens: imagensBase64,
-            categoria: categoria
+        reader.onload = async function () {
+            const comprimida = await comprimirImagem(reader.result, 0.4);
+
+            imagensBase64.push(comprimida);
+
+            let img = document.createElement("img");
+            img.src = comprimida;
+
+            document.getElementById("previewContainer").appendChild(img);
         };
 
-        let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
-        produtos.push(produto);
+        reader.readAsDataURL(file);
+    }
+});
 
-        localStorage.setItem("produtos", JSON.stringify(produtos));
+/* ============================================================
+   SALVAR PRODUTO
+============================================================ */
+function salvarProduto() {
 
-        document.getElementById("msg").textContent = "Produto salvo com sucesso!";
+    const categoria = document.getElementById("categoriaProduto").value;
+    const nome = document.getElementById("nomeProduto").value;
+    const preco = document.getElementById("precoProduto").value;
+    const qtd = document.getElementById("qtdProduto").value;
+    const desc = document.getElementById("descProduto").value;
+    const detalhes = document.getElementById("detalhesProduto").value;
 
-        limparCampos();
-        carregarProdutos();
+    if (!nome || !preco || !qtd || imagensBase64.length === 0) {
+        alert("Preencha todos os campos obrigatórios!");
+        return;
     }
 
-    function limparCampos() {
-        document.getElementById("nomeProduto").value = "";
-        document.getElementById("precoProduto").value = "";
-        document.getElementById("qtdProduto").value = "";
-        document.getElementById("descProduto").value = "";
-        document.getElementById("detalhesProduto").value = "";
-        document.getElementById("previewContainer").innerHTML = "";
-        imagensBase64 = [];
-    }
+    const produto = {
+        id: Date.now(),
+        nome,
+        preco,
+        quantidade: qtd,
+        descricao: desc,
+        detalhes,
+        imagens: imagensBase64,
+        categoria: categoria
+    };
 
-    /* ============================================================
-       LISTAGEM DOS PRODUTOS
-    ============================================================ */
-    function carregarProdutos() {
-        const lista = document.getElementById("listaProdutos");
-        lista.innerHTML = "<h2>Produtos Cadastrados</h2>";
+    let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+    produtos.push(produto);
 
-        const produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+    localStorage.setItem("produtos", JSON.stringify(produtos));
 
-        produtos.forEach(prod => {
+    document.getElementById("msg").textContent = "Produto salvo com sucesso!";
 
-            const div = document.createElement("div");
-            div.classList.add("produto-admin");
+    limparCampos();
+    carregarProdutos();
+}
 
-            let miniImgs = "";
-            prod.imagens.forEach(img => {
-                miniImgs += `<img src='${img}'>`;
-            });
+function limparCampos() {
+    document.getElementById("nomeProduto").value = "";
+    document.getElementById("precoProduto").value = "";
+    document.getElementById("qtdProduto").value = "";
+    document.getElementById("descProduto").value = "";
+    document.getElementById("detalhesProduto").value = "";
+    document.getElementById("previewContainer").innerHTML = "";
+    imagensBase64 = [];
+}
 
-            div.innerHTML = `
-                ${miniImgs}
-                <h3>${prod.nome}</h3>
-                <p><b>Categoria:</b> ${prod.categoria}</p>
-                <p>${prod.descricao}</p>
-                <p><b>Preço:</b> R$ ${parseFloat(prod.preco).toFixed(2)}</p>
-                <button onclick="removerProduto(${prod.id})" style="background:#d9534f;color:white">
-                    Remover
-                </button>
-            `;
+/* ============================================================
+   LISTAR PRODUTOS
+============================================================ */
+function carregarProdutos() {
+    const lista = document.getElementById("listaProdutos");
+    lista.innerHTML = "<h2>Produtos Cadastrados</h2>";
 
-            lista.appendChild(div);
+    const produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+
+    produtos.forEach(prod => {
+
+        const div = document.createElement("div");
+        div.classList.add("produto-admin");
+
+        let miniImgs = "";
+        prod.imagens.forEach(img => {
+            miniImgs += `<img src='${img}'>`;
         });
-    }
 
-    /* ============================================================
-       REMOVER PRODUTO
-    ============================================================ */
-    function removerProduto(id) {
-        let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
-        produtos = produtos.filter(p => p.id !== id);
+        div.innerHTML = `
+            ${miniImgs}
+            <h3>${prod.nome}</h3>
+            <p><b>Categoria:</b> ${prod.categoria}</p>
+            <p>${prod.descricao}</p>
+            <p><b>Preço:</b> R$ ${parseFloat(prod.preco).toFixed(2)}</p>
+            <button onclick="removerProduto(${prod.id})" style="background:#d9534f;color:white">
+                Remover
+            </button>
+        `;
 
-        localStorage.setItem("produtos", JSON.stringify(produtos));
+        lista.appendChild(div);
+    });
+}
 
-        carregarProdutos();
-        alert("Produto removido!");
-    }
+/* ============================================================
+   REMOVER PRODUTO
+============================================================ */
+function removerProduto(id) {
+    let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+    produtos = produtos.filter(p => p.id !== id);
 
-    /* ============================================================
-       MOSTRAR OU OCULTAR O BLOCO DE CADASTRO
-    ============================================================ */
-    function toggleCadastro() {
-        const box = document.getElementById("cadastroBox");
-        box.style.display = box.style.display === "none" ? "block" : "none";
-    }
+    localStorage.setItem("produtos", JSON.stringify(produtos));
+
+    carregarProdutos();
+    alert("Produto removido!");
+}
+
+/* ============================================================
+   MOSTRAR OU OCULTAR CADASTRO
+============================================================ */
+function toggleCadastro() {
+    const box = document.getElementById("cadastroBox");
+    box.style.display = box.style.display === "none" ? "block" : "none";
+}
 </script>
 
 </body>
