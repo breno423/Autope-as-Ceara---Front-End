@@ -800,3 +800,215 @@ footer {
 .whatsapp-qr-label {
     font-size: 0.9rem; /* Adicionado para reduzir */
 }
+/* ==========================================================
+   RESPONSIVIDADE — MOBILE E TABLET
+   (COLE NO FINAL DO SEU CSS)
+========================================================== */
+
+/* ================================
+      TABLET (até 992px)
+================================ */
+@media (max-width: 992px) {
+
+    .header-top {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .search-box {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .header-bottom ul {
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .carrossel {
+        height: 400px;
+    }
+
+    .section-container {
+        padding: 20px;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+
+    .product-img {
+        width: 200px;
+        height: 160px;
+    }
+
+    #productDetailsModal .modal-content {
+        width: 90%;
+        padding: 20px;
+    }
+
+    #productDetailsModal .product-detail-img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .maps-container iframe {
+        width: 100%;
+        height: 350px;
+    }
+
+    .footer-container {
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    .footer-col {
+        flex: 1 1 45%;
+    }
+}
+
+
+
+/* ================================
+      CELULAR (até 768px)
+================================ */
+@media (max-width: 768px) {
+
+    /* HEADER */
+    .header-top {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .logo {
+        height: 45px;
+    }
+
+    .header-bottom ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .header-bottom ul li a {
+        font-size: 1rem;
+        padding: 6px 0;
+    }
+
+    /* CARROSSEL */
+    .carrossel {
+        height: 320px;
+    }
+
+    .slide {
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* PRODUTOS */
+    .product-list {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 15px;
+    }
+
+    .product-item {
+        padding: 15px;
+    }
+
+    .product-img {
+        width: 160px;
+        height: 130px;
+    }
+
+    .product-item h3 {
+        font-size: 1.1rem;
+    }
+
+    .product-item span {
+        font-size: 1.3rem;
+    }
+
+    /* MODAL */
+    .modal-content {
+        width: 90%;
+        padding: 20px;
+    }
+
+    #productDetailsModal .product-detail-img {
+        width: 180px;
+        height: 180px;
+    }
+
+    /* FOOTER */
+    .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .footer-col {
+        min-width: 100%;
+    }
+
+    /* MAPA */
+    .maps-container iframe {
+        width: 100%;
+        height: 280px;
+    }
+
+    /* WHATSAPP */
+    .whatsapp-float img {
+        width: 55px;
+        height: 55px;
+    }
+
+}
+
+
+
+/* ================================
+      CELULAR PEQUENO (até 480px)
+================================ */
+@media (max-width: 480px) {
+
+    .logo {
+        height: 40px;
+    }
+
+    .search-box {
+        padding: 3px;
+    }
+
+    .search-input {
+        font-size: 0.85rem;
+    }
+
+    .carrossel {
+        height: 250px;
+    }
+
+    .product-list {
+        grid-template-columns: 1fr;
+    }
+
+    .product-img {
+        width: 140px;
+        height: 120px;
+    }
+
+    #productDetailsModal .product-detail-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .toast {
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .maps-container iframe {
+        height: 250px;
+    }
+}
