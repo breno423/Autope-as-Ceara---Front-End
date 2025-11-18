@@ -326,3 +326,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 4000);
     mostrarSlide(index);
 });
+// --- CARREGAR PRODUTOS DO ADMIN NA PÁGINA PRINCIPAL ---
+window.addEventListener("DOMContentLoaded", () => {
+    const produtosSalvos = JSON.parse(localStorage.getItem("produtos")) || [];
+    const lista = document.querySelector("#produtosEmDestaque .product-list");
+
+    produtosSalvos.forEach(prod => {
+        const item = document.createElement("div");
+        item.classList.add("product-item");
+        item.dataset.details = prod.detalhes;
+
+        item.innerHTML = `
+            <h3>${prod.nome}</h3>
+
+            <div class="product-img">
+                <img src="${prod.imagem}">
+            </div>
+
+            <p>${prod.descricao}</p>
+            <span>R$ ${parseFloat(prod.preco).toFixed(2)}</span>
+
+            <div class="botao">
+                <button onclick="comprar('${prod.nome}', ${parseFloat(prod.preco)}, '${prod.imagem}', '${prod.detalhes}')">Comprar</button>
+                <button class="btn-detalhes" onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
+            </div>
+        `;
+
+        lista.appendChild(item);
+    });
+});

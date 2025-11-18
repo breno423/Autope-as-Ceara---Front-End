@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - AutoPeças Maia</title>
+    <style>
+        body { font-family: Arial; background: #f3f3f3; margin: 0; padding: 0; }
+        .box { width: 380px; margin: 40px auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.2); }
+        input, textarea, button { width: 100%; padding: 10px; margin: 10px 0; }
+        #painel { display: none; }
+        img.preview { width: 120px; display: none; margin-bottom: 10px; border-radius: 6px; }
+        .produto-admin { border: 1px solid #ddd; padding: 10px; border-radius: 6px; margin-top: 10px; }
+        .produto-admin img { width: 80px; border-radius: 4px; margin-bottom: 5px; }
+        .top-btns { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .top-btns a, .top-btns button { width: 48%; }
+        h3 { margin-bottom: 5px; }
+    </style>
+</head>
+
+<body>
+
+    <!-- Tela de Login -->
+    <div class="box" id="loginBox">
+        <h2>Login de Administrador</h2>
+        <input type="text" id="adminUser" placeholder="Usuário">
+        <input type="password" id="adminPass" placeholder="Senha">
+        <button onclick="fazerLogin()">Entrar</button>
+        <p style="font-size:14px;color:#666;">Usuário: admin | Senha: 1234</p>
+    </div>
+
+    <!-- Painel Administrativo -->
+    <div id="painel" class="box">
+        <div class="top-btns">
+            <a href="index.html"><button>Voltar para o site</button></a>
+            <button onclick="toggleCadastro()">Cadastrar Produto</button>
+        </div>
+
+        <!-- CADASTRO -->
+        <div id="cadastroBox">
+            <h2>Cadastrar Novo Produto</h2>
+
+            <input type="file" id="imgProduto" accept="image/*">
+            <img id="previewProduto" class="preview">
+
+            <input type="text" id="nomeProduto" placeholder="Nome do Produto">
+            <input type="number" id="precoProduto" placeholder="Preço (R$)" step="0.01">
+            <input type="number" id="qtdProduto" placeholder="Quantidade">
+            <input type="text" id="descProduto" placeholder="Descrição curta">
+            <textarea id="detalhesProduto" placeholder="Detalhes técnicos"></textarea>
+
+            <button onclick="salvarProduto()">Salvar Produto</button>
+            <p id="msg" style="color:green;"></p>
+        </div>
+
+        <!-- LISTA DE PRODUTOS -->
+        <div id="listaProdutos">
+            <h2>Produtos Cadastrados</h2>
+        </div>
+
+    </div>
+
+<script>
+    // --- LOGIN ---
+    const USER = "admin";
+    const PASS = "1234";
+
+    function fazerLogin() {
+        const user = document.getElementById("adminUser").value;
+        const pass = document.getElementById("adminPass").value;
+
+        if (user === USER && pass === PASS) {
+            document.getElementById("loginBox").style.display = "none";
+            document.getElementById("painel").style.display = "block";
+            carregarProdutos();
+        } else {
+            alert("Usuário ou senha incorretos.");
+        }
+    }
+
+    // --- CADASTRO ---
+    let imgBase64 = "";
+
+    document.getElementById("imgProduto").addEventListener("change", function() {
+        const file = this.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function() {
+            imgBase64 = reader.result;
+            const preview = document.getElementById("previewProduto");
+            preview.src = imgBase64;
+            preview.style.display = "block";
+        };
+
+        if (file) reader.readAsDataURL(file);
+    });
+
+    function salvarProduto() {
+        const nome = document.getElementById("nomeProduto").value;
+        const preco = document.getElementById("precoProduto").value;
+        const qtd = document.getElementById("qtdProduto").value;
+        const desc = document.getElementById("descProduto").value;
+        const detalhes = document.getElementById("detalhesProduto").value;
+
+        if (!nome || !preco || !qtd || !imgBase64) {
+            alert("Preencha os campos obrigatórios!");
+            return;
+        }
+
+        const produto = {
+            id: Date.now(), // Identificador único
+            nome,
+            preco,
+            quantidade: qtd,
+            descricao: desc,
+            detalhes,
+            imagem: imgBase64
+        };
+
+        let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+        produtos.push(produto);
+        localStorage.setItem("produtos", JSON.stringify(produtos));
+
+        document.getElementById("msg").textContent = "Produto salvo com sucesso!";
+        limparCampos();
+
+        carregarProdutos();
+    }
+
+    // Limpar após cadastro
+    function limparCampos() {
+        document.getElementById("nomeProduto").value = "";
+        document.getElementById("precoProduto").value = "";
+        document.getElementById("qtdProduto").value = "";
+        document.getElementById("descProduto").value = "";
+        document.getElementById("detalhesProduto").value = "";
+        document.getElementById("previewProduto").style.display = "none";
+        imgBase64 = "";
+    }
+
+    // --- LISTAR PRODUTOS ---
+    function carregarProdutos() {
+        const lista = document.getElementById("listaProdutos");
+        
+        let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+
+        lista.innerHTML = "<h2>Produtos Cadastrados</h2>";
+
+        produtos.forEach(prod => {
+            const div = document.createElement("div");
+            div.classList.add("produto-admin");
+
+            div.innerHTML = `
+                <img src="${prod.imagem}">
+                <h3>${prod.nome}</h3>
+                <p>${prod.descricao}</p>
+                <p><strong>Preço:</strong> R$ ${parseFloat(prod.preco).toFixed(2)}</p>
+                <button onclick="removerProduto(${prod.id})" style="background:#d9534f;color:white;">Remover</button>
+            `;
+
+            lista.appendChild(div);
+        });
+    }
+
+    // --- REMOVER PRODUTO ---
+    function removerProduto(id) {
+        let produtos = JSON.parse(localStorage.getItem("produtos")) || [];
+        produtos = produtos.filter(p => p.id !== id);
+        localStorage.setItem("produtos", JSON.stringify(produtos));
+
+        carregarProdutos();
+        alert("Produto removido!");
+    }
+
+    // Alternar cadastro (mostrar/ocultar)
+    function toggleCadastro() {
+        const box = document.getElementById("cadastroBox");
+        box.style.display = box.style.display === "none" ? "block" : "none";
+    }
+</script>
+
+</body>
+</html>
