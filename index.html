@@ -2,429 +2,308 @@
 <html lang="pt-BR">
 
 <head>
-   
-     <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carrossel Autopeças</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoPeças Maia</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
-        <div class="header-top">
-            <div class="logo-container">
-                <img src="imagens/logo - Editado.png" alt="Logo da AutoPeças Maia" class="logo">
-            </div>
-            <div class="search-box">
-                <input type="text" id="searchInput" class="search-input" placeholder="Buscar peças...">
-                <span class="search-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </span>
-            </div>
-            <div class="header-right">
-                <button class="login-btn" id="openModal">Login/Cadastro</button>
-                <div class="cart-icon" id="cartIcon">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span id="cart-count">0</span>
-                </div>
+
+<header>
+    <div class="header-top">
+        <div class="logo-container">
+            <img src="imagens/logo - Editado.png" alt="Logo da AutoPeças Maia" class="logo">
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" class="search-input" placeholder="Buscar peças...">
+            <span class="search-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </span>
+        </div>
+
+        <div class="header-right">
+            <button class="login-btn" id="openModal">Login/Cadastro</button>
+            <div class="cart-icon" id="cartIcon">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
             </div>
         </div>
-        <nav class="header-bottom">
-            <ul>
-                <li>
-                    <a href="#Motores"><i class="fas fa-cogs"></i> Motores</a>
-                    <ul class="submenu">
-                        <li><a href="#"><i class="fas fa-gas-pump"></i> Motores a Gasolina</a></li>
-                        <li><a href="#"><i class="fas fa-industry"></i> Motores a Diesel</a></li>
-                        <li><a href="#"><i class="fas fa-tools"></i> Componentes</a></li>
-                    </ul>
-                </li>
-                <li><a href="#Pneus"><i class="fa-solid fa-life-ring"></i> Pneus</a></li>
-                <li>
-                    <a href="#Autopeças"><i class="fas fa-car-battery"></i> Autopeças</a>
-                    <ul class="submenu">
-                        <li><a href="#"><i class="fas fa-car-crash"></i> Freios</a></li>
-                        <li><a href="#"><i class="fas fa-filter"></i> Filtros</a></li>
-                        <li><a href="#"><i class="fas fa-bolt"></i> Elétrica</a></li>
-                        <li><a href="#"><i class="fas fa-wrench"></i> Acessórios</a></li>
-                    </ul>
-                </li>
-                <li><a href="#AmortecedoreseSuspensões"><i class="fas fa-car-side"></i> Suspensão</a></li>
-            </ul>
-        </nav>
-    </head>
-<body>
-
- <div class="carrossel">
-  <div class="slides" id="slides">
-
-    <!-- Slide 1 -->
-    <div class="slide" style="background-image: url('conheçaceara.png');">   
     </div>
 
-    <!-- Slide 2 -->
-    <div class="slide" style="background-image: url('quemsomos.png');">
+    <nav class="header-bottom">
+        <ul>
+            <li>
+                <a href="#Motores"><i class="fas fa-cogs"></i> Motores</a>
+            </li>
+
+            <li>
+                <a href="#Pneus"><i class="fa-solid fa-life-ring"></i> Pneus</a>
+            </li>
+
+            <li>
+                <a href="#Autopeças"><i class="fas fa-car-battery"></i> Autopeças</a>
+            </li>
+
+            <li>
+                <a href="#AmortecedoreseSuspensões"><i class="fas fa-car-side"></i> Suspensão</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<!-- =======================================================
+     CARROSSEL PRINCIPAL
+======================================================= -->
+<div class="carrossel">
+    <div class="slides" id="slides">
+
+        <div class="slide" style="background-image: url('conheçaceara.png');"></div>
+        <div class="slide" style="background-image: url('quemsomos.png');"></div>
+        <div class="slide" style="background-image: url('qualidade.png');"></div>
+        <div class="slide" style="background-image: url('feedbacks.png');"></div>
+
     </div>
 
-    <!-- Slide 3 -->
-    <div class="slide" style="background-image: url('qualidade.png');">
+    <div class="navegacao" id="navegacao">
+        <div class="ativo"></div>
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
-
-     <!-- Slide 3 -->
-    <div class="slide" style="background-image: url('feedbacks.png');">
-    </div>
-
-  </div>
-
-  <!-- Navegação -->
-  <div class="navegacao" id="navegacao">
-    <div class="ativo"></div>
-    <div></div>
-    <div></div>
-     <div></div>
-  </div>
 </div>
 
-        <section id="produtosEmDestaque">
-            <div class="section-container">
-                <h2>Produtos em Destaque</h2>
-                <div class="product-list">
-                    <div class="product-item"
-                        data-details="Compatível com motores a gasolina e diesel. Alta durabilidade, material premium. Especificações: Irídio, 4 unidades por kit. Garantia: 6 meses.">
-                        <h3>Vela de Ignição Bosch</h3>
-                        <div class="product-img">
-                            <img src="imagens/vela.png" alt="Vela de Ignição Bosch" class="img-vela">
-                            <img src="imagens/vela2.png" alt="Vela ângulo diferente">
-                        </div>
-                        <p>Compatível com diversos modelos.</p>
-                        <span>R$ 25,00</span>
-                        <div class="botao">
-                            <button
-                                onclick="comprar('Vela de Ignição Bosch', 25, 'imagens/vela.png', this.parentElement.parentElement.dataset.details)">Comprar</button>
-                            <button class="btn-detalhes"
-                                onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
-                        </div>
-                    </div>
-                    <div class="product-item"
-                        data-details="Pneu radial com tecnologia anti-aquaplanagem. Medidas: 205/55 R15. Índice de carga: 91V. Garantia: 5 anos contra defeitos de fabricação.">
-                        <h3>Pneu Aro 15 Michelin</h3>
-                        <div class="product-img">
-                            <img src="imagens/pneu2.png" alt="Pneu Aro 15 Michelin">
-                            <img src="imagens/pneu.png.png" alt="Pneu ângulo diferente">
-                        </div>
-                        <p>Alta durabilidade e performance.</p>
-                        <span>R$ 350,00</span>
-                        <div class="botao">
-                            <button
-                                onclick="comprar('Pneu Aro 15 Michelin', 350, 'imagens/pneu2.png', this.parentElement.parentElement.dataset.details)">Comprar</button>
-                            <button class="btn-detalhes"
-                                onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
-                        </div>
-                    </div>
-                    <div class="product-item"
-                        data-details="Amortecedor pressurizado a gás. Compatível com veículos leves. Curso: 150mm. Garantia: 2 anos. Inclui kit de montagem.">
-                        <h3>Amortecedor Cofap</h3>
-                        <div class="product-img">
-                            <img src="imagens/Amortecedor Cofap2.png" alt="Amortecedor Cofap" class="img-amortecedor">
-                             <img src="imagens/Amortecedor Cofap.png" alt="Amortecedor Cofap" class="img-amortecedor">
-                        </div>
-                        <p>Para suspensão dianteira.</p>
-                        <span>R$ 180,00</span>
-                        <div class="botao">
-                            <button
-                                onclick="comprar('Amortecedor Cofap', 180, '', this.parentElement.parentElement.dataset.details)">Comprar</button>
-                            <button class="btn-detalhes"
-                                onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
-                        </div>
-                    </div>
-                    <div class="product-item"
-                        data-details="Filtro com alta capacidade de retenção de impurezas. Compatível com motores até 2.0L. Material: Papel celulose. Garantia: 1 ano.">
-                        <h3>Filtro de Óleo Fram</h3>
-                        <div class="product-img">
-                            <img src="imagens/Filtro de Óleo Fram2.png" alt="Filtro de Óleo Fram" class="img-Filtro de Óleo Fram">
-                            <img src="imagens/Filtro de Óleo Fram.png" alt="Filtro de Óleo Fram" class="img-Filtro de Óleo Fram">
-                            <img src="imagens/Filtro de Óleo Fram3.png" alt="Filtro de Óleo Fram" class="img-Filtro de Óleo Fram">
-                        </div>
-                        <p>Mantenha seu motor protegido.</p>
-                        <span>R$ 45,00</span>
-                        <div class="botao">
-                            <button
-                                onclick="comprar('Filtro de Óleo Fram', 45, '', this.parentElement.parentElement.dataset.details)">Comprar</button>
-                            <button class="btn-detalhes"
-                                onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
-                        </div>
-                    </div>
-                    <div class="product-item"
-                        data-details="Lâmpada halógena com feixe de luz branca. Potência: 55W. Tensão: 12V. Garantia: 6 meses. Pacote com 2 unidades.">
-                        <h3>Lâmpada H7 Philips</h3>
-                        <div class="product-img">
-                            <img src="imagens/Lâmpada H7 Philips.png" alt="Lâmpada H7 Philipsp" class="img-Lâmpada H7 Philips">
-                            <img src="imagens/Lâmpada H7 Philips2.png" alt="Lâmpada H7 Philipsp" class="img-Lâmpada H7 Philips">
-                        </div>
-                        <p>Maior visibilidade noturna.</p>
-                        <span>R$ 60,00</span>
-                        <div class="botao">
-                            <button
-                                onclick="comprar('Lâmpada H7 Philips', 60, '', this.parentElement.parentElement.dataset.details)">Comprar</button>
-                            <button class="btn-detalhes"
-                                onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="Motores">
-            <div class="section-container">
-                <h2>Motores</h2>
-                <div class="product-list">
-                    <div class="product-item"
-                        data-details="Kit completo incluindo bloco, cabeçote e periféricos. Potência: 120HP. Torque: 160Nm. Garantia: 3 anos. Compatível com veículos nacionais.">
-                        <h3>Kit de Motor Completo</h3>
-                        <div class="product-img"></div>
-                        <p>Motor 1.6 a gasolina, pronto para instalar.</p>
-                        <span>R$ 4.500,00</span>
-                        <div class="botao">
-                            <button
-                                onclick="comprar('Kit de Motor Completo', 4500, '', this.parentElement.parentElement.dataset.details)">Comprar</button>
-                            <button class="btn-detalhes"
-                                onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
-                        </div>
-                    </div>
-                    <div class="product-item"
-                        data-details="Bomba de alta pressão com vazão de 100L/h. Material: Aço inoxidável. Garantia: 1 ano. Inclui filtros.">
-                        <h3>Bomba de Combustível</h3>
-                        <div class="product-img"></div>
-                        <p>Para motores a diesel de alta performance.</p>
-                        <span>R$ 550,00</span>
-                        <div class="botao">
-                            <button
-                                onclick="comprar('Bomba de Combustível', 550, '', this.parentElement.parentElement.dataset.details)">Comprar</button>
-                            <button class="btn-detalhes"
-                                onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="Pneus">
-            <div class="section-container">
-                <h2>Pneus</h2>
-                <div class="product-list">
-                    <div class="product-item"
-                        data-details="Pneu esportivo com aderência superior. Medidas: 225/45 R17. Índice de velocidade: W. Garantia: 5 anos.">
-                        <h3>Pneu Aro 17 Pirelli</h3>
-                        <div class="product-img"></div>
-                        <p>Segurança e estabilidade em pista molhada.</p>
-                        <span>R$ 480,00</span>
-                        <div class="botao">
-                            <button
-                                onclick="comprar('Pneu Aro 17 Pirelli', 480, '', this.parentElement.parentElement.dataset.details)">Comprar</button>
-                            <button class="btn-detalhes"
-                                onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="Autopeças">
-            <div class="section-container">
-                <h2>Autopeças</h2>
-                <div class="product-list">
-                    <div class="product-item"
-                        data-details="Kit com 4 pastilhas e 2 discos ventilados. Material: Cerâmica. Garantia: 2 anos. Reduz ruído e poeira.">
-                        <h3>Kit de Freio a Disco</h3>
-                        <div class="product-img"></div>
-                        <p>Pastilhas e discos para maior segurança.</p>
-                        <span>R$ 250,00</span>
-                        <div class="botao">
-                            <button
-                                onclick="comprar('Kit de Freio a Disco', 250, '', this.parentElement.parentElement.dataset.details)">Comprar</button>
-                            <button class="btn-detalhes"
-                                onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="AmortecedoreseSuspensões">
-            <div class="section-container">
-                <h2>Amortecedores e Suspensões</h2>
-                <div class="product-list">
-                    <div class="product-item"
-                        data-details="Kit ajustável com molas e amortecedores. Faixa de ajuste: 30-60mm. Material: Aço temperado. Garantia: 3 anos.">
-                        <h3>Kit de Suspensão a Rosca</h3>
-                        <div class="product-img"></div>
-                        <p>Ajuste a altura do seu veículo com precisão.</p>
-                        <span>R$ 900,00</span>
-                        <div class="botao">
-                            <button
-                                onclick="comprar('Kit de Suspensão a Rosca', 900, '', this.parentElement.parentElement.dataset.details)">Comprar</button>
-                            <button class="btn-detalhes"
-                                onclick="mostrarDetalhes(this.parentElement.parentElement)">Mais Detalhes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <span class="close-btn" id="closeModal">&times;</span>
-            <div class="modal-tabs">
-                <button class="tab-btn active" data-tab="login">Login</button>
-                <button class="tab-btn" data-tab="cadastro">Cadastro</button>
-            </div>
-            <div class="tab-content active" id="login">
-                <form>
-                    <input type="email" placeholder="Email" required>
-                    <input type="password" placeholder="Senha" required>
-                    <button type="submit">Entrar</button>
-                </form>
-            </div>
-            <div class="tab-content" id="cadastro">
-                <form>
-                    <input type="text" placeholder="Nome" required>
-                    <input type="email" placeholder="Email" required>
-                    <input type="password" placeholder="Senha" required>
-                    <input type="tel" placeholder="Telefone" required>
-                    <input type="text" name="cpf" placeholder="Digite seu CPF" maxlength="14"
-                        pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato: 000.000.000-00" required>
-                    <button type="submit">Cadastrar</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="modal" id="cartModal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="fecharModal('cartModal')">&times;</span>
-            <h2>Seu Carrinho</h2>
-            <ul id="cartItems"></ul>
-            <p id="cartTotal">Total: R$ 0,00</p>
-            <div class="cart-actions">
-                <button onclick="limparCarrinho()">Limpar Carrinho</button>
-                <button onclick="prosseguirCompra()">Prosseguir para Compra</button>
-            </div>
-        </div>
-    </div>
-    <div class="modal" id="productDetailsModal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="fecharModal('productDetailsModal')">&times;</span>
-            <img id="detailImg" class="product-detail-img" src="" alt="Imagem do Produto">
-            <h3 id="detailTitle"></h3>
-            <p id="detailDesc"></p>
-            <span id="detailPrice" class="price"></span>
-            <div class="specs">
-                <h4>Especificações</h4>
-                <ul id="detailSpecs"></ul>
-            </div>
-            <button onclick="comprarDoModal()">Adicionar ao Carrinho</button>
-        </div>
-    </div>
-    <div><a href="admin.html" id="btnAddProduto" class="login-btn">Cadastrar Produto</a></div>
-    <div id="toast" class="toast"></div>
-    <script src="script.js"></script>
-    <!-- Componente Google Maps -->
-    <div class="maps-container">
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3896.6445183571113!2d-38.7544878248521!3d-12.406714548707217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7142dea9c9bd88b%3A0xa225588452fda744!2zQ2VhcsOhIEF1dG8gcGXDp2Fz!5e0!3m2!1spt-BR!2sbr!4v1758484177362!5m2!1spt-BR!2sbr"
-            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-    <link rel="stylesheet" href="components/googlemaps.css">
-    <!-- Componente WhatsApp Flutuante -->
-    <div class="whatsapp-float" id="whatsappBtn" title="Fale conosco no WhatsApp">
-        <a href="https://api.whatsapp.com/send?phone=5575983579088" target="_blank"
-            style="display:flex;align-items:center;justify-content:center;">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp"
-                style="width:48px;height:48px;">
-        </a>
-    </div>
-    <div class="whatsapp-qr-container" id="whatsappQr" style="display:none;">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://api.whatsapp.com/send?phone=5575983579088"
-            alt="QR Code WhatsApp" class="whatsapp-qr">
-        <span class="whatsapp-qr-label">Escaneie e fale conosco!</span>
-    </div>
-    <link rel="stylesheet" href="components/whatsapp.css">
-    <script src="components/whatsapp.js"></script>
-</head>
-<body>
 
-  <footer>
+
+<!-- =======================================================
+     SEÇÕES DE PRODUTOS — AGORA VAZIAS
+======================================================= -->
+
+<section id="produtosEmDestaque">
+    <div class="section-container">
+        <h2>Produtos em Destaque</h2>
+        <div class="product-list"></div>
+    </div>
+</section>
+
+<section id="Motores">
+    <div class="section-container">
+        <h2>Motores</h2>
+        <div class="product-list"></div>
+    </div>
+</section>
+
+<section id="Pneus">
+    <div class="section-container">
+        <h2>Pneus</h2>
+        <div class="product-list"></div>
+    </div>
+</section>
+
+<section id="Autopeças">
+    <div class="section-container">
+        <h2>Autopeças</h2>
+        <div class="product-list"></div>
+    </div>
+</section>
+
+<section id="AmortecedoreseSuspensões">
+    <div class="section-container">
+        <h2>Amortecedores e Suspensões</h2>
+        <div class="product-list"></div>
+    </div>
+</section>
+
+
+
+<!-- =======================================================
+     MODAIS DO SITE
+======================================================= -->
+
+<!-- LOGIN -->
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeModal">&times;</span>
+
+        <div class="modal-tabs">
+            <button class="tab-btn active" data-tab="login">Login</button>
+            <button class="tab-btn" data-tab="cadastro">Cadastro</button>
+        </div>
+
+        <div class="tab-content active" id="login">
+            <form>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Senha" required>
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+
+        <div class="tab-content" id="cadastro">
+            <form>
+                <input type="text" placeholder="Nome" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Senha" required>
+                <input type="tel" placeholder="Telefone" required>
+                <input type="text" name="cpf" placeholder="Digite seu CPF" maxlength="14"
+                    pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato: 000.000.000-00" required>
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- CARRINHO -->
+<div class="modal" id="cartModal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="fecharModal('cartModal')">&times;</span>
+        <h2>Seu Carrinho</h2>
+        <ul id="cartItems"></ul>
+        <p id="cartTotal">Total: R$ 0,00</p>
+        <div class="cart-actions">
+            <button onclick="limparCarrinho()">Limpar Carrinho</button>
+            <button onclick="prosseguirCompra()">Prosseguir para Compra</button>
+        </div>
+    </div>
+</div>
+
+<!-- DETALHES -->
+<div class="modal" id="productDetailsModal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="fecharModal('productDetailsModal')">&times;</span>
+
+        <img id="detailImg" class="product-detail-img" src="" alt="Imagem do Produto">
+        <h3 id="detailTitle"></h3>
+        <p id="detailDesc"></p>
+        <span id="detailPrice" class="price"></span>
+
+        <div class="specs">
+            <h4>Especificações</h4>
+            <ul id="detailSpecs"></ul>
+        </div>
+
+        <button onclick="comprarDoModal()">Adicionar ao Carrinho</button>
+    </div>
+</div>
+
+<div><a href="admin.html" id="btnAddProduto" class="login-btn">Cadastrar Produto</a></div>
+
+<div id="toast" class="toast"></div>
+
+
+
+<!-- =======================================================
+     MAPA GOOGLE + WHATSAPP
+======================================================= -->
+<div class="maps-container">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3896.6445183571113!2d-38.7544878248521!3d-12.406714548707217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7142dea9c9bd88b%3A0xa225588452fda744!2zQ2VhcsOhIEF1dG8gcGXDp2Fz!5e0!3m2!1spt-BR!2sbr!4v1758484177362!5m2!1spt-BR!2sbr"
+        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+<link rel="stylesheet" href="components/googlemaps.css">
+
+<div class="whatsapp-float" id="whatsappBtn" title="Fale conosco no WhatsApp">
+    <a href="https://api.whatsapp.com/send?phone=5575983579088" target="_blank"
+        style="display:flex;align-items:center;justify-content:center;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp"
+            style="width:48px;height:48px;">
+    </a>
+</div>
+
+<div class="whatsapp-qr-container" id="whatsappQr" style="display:none;">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://api.whatsapp.com/send?phone=5575983579088"
+        alt="QR Code WhatsApp" class="whatsapp-qr">
+    <span class="whatsapp-qr-label">Escaneie e fale conosco!</span>
+</div>
+
+<link rel="stylesheet" href="components/whatsapp.css">
+<script src="components/whatsapp.js"></script>
+
+
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+<footer>
     <div class="footer-container">
-      <!-- Coluna 1 -->
-      <div class="footer-col">
-        <h3>Sobre a Loja</h3>
-        <ul>
-          <li><a href="#">Quem Somos</a></li>
-          <li><a href="#">Soluções de Tecnologia</a></li>
-          <li><a href="#">Trabalhe Conosco</a></li>
-          <li><a href="#">Blog</a></li>
-        </ul>
-      </div>
 
-      <!-- Coluna 2 -->
-      <div class="footer-col">
-        <h3>Privacidade</h3>
-        <ul>
-          <li><a href="#">Política de Privacidade</a></li>
-          <li><a href="#">Política de Entrega</a></li>
-          <li><a href="#">Trocas e Devoluções</a></li>
-          <li><a href="#">Termos de Uso</a></li>
-        </ul>
-      </div>
+        <div class="footer-col">
+            <h3>Sobre a Loja</h3>
+            <ul>
+                <li><a href="#">Quem Somos</a></li>
+                <li><a href="#">Soluções de Tecnologia</a></li>
+                <li><a href="#">Trabalhe Conosco</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+        </div>
 
-      <!-- Coluna 3 -->
-      <div class="footer-col">
-        <h3>Ajuda</h3>
-        <ul>
-          <li><a href="#">Fale Conosco</a></li>
-          <li><a href="#">Minha Conta</a></li>
-          <li><a href="#">Acompanhe seu Pedido</a></li>
-        </ul>
-      </div>
+        <div class="footer-col">
+            <h3>Privacidade</h3>
+            <ul>
+                <li><a href="#">Política de Privacidade</a></li>
+                <li><a href="#">Política de Entrega</a></li>
+                <li><a href="#">Trocas e Devoluções</a></li>
+                <li><a href="#">Termos de Uso</a></li>
+            </ul>
+        </div>
 
-      <!-- Coluna 4 -->
-      <div class="footer-col">
-        <h3>SAC</h3>
-        <p>WhatsApp: (11) 94490-9162</p>
-        <p>Telefone: (11) 94490-9162</p>
-        <p>Email: <a href="mailto:atendimento@exemplo.com">atendimento@exemplo.com</a></p>
-        <p>Segunda a Sexta das 09h às 18h</p>
-      </div>
+        <div class="footer-col">
+            <h3>Ajuda</h3>
+            <ul>
+                <li><a href="#">Fale Conosco</a></li>
+                <li><a href="#">Minha Conta</a></li>
+                <li><a href="#">Acompanhe seu Pedido</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>SAC</h3>
+            <p>WhatsApp: (11) 94490-9162</p>
+            <p>Telefone: (11) 94490-9162</p>
+            <p>Email: <a href="mailto:atendimento@exemplo.com">atendimento@exemplo.com</a></p>
+            <p>Segunda a Sexta das 09h às 18h</p>
+        </div>
     </div>
 
-    <!-- Parte de baixo -->
     <div class="footer-bottom">
-      <div class="payments">
-        <span>Formas de Pagamento: </span>
-        <img src="https://img.icons8.com/color/48/visa.png" alt="Visa"/>
-        <img src="https://img.icons8.com/color/48/mastercard.png" alt="Mastercard"/>
-        <img src="https://img.icons8.com/color/48/amex.png" alt="Amex"/>
-        <img src="https://img.icons8.com/color/48/boleto-bankario.png" alt="Boleto"/>
-        <img src="https://img.icons8.com/color/48/pix.png" alt="Pix"/>
-      </div>
-      <div class="copyright">
-        &copy; 2024 AutoPeças Maia. Todos os direitos reservados.
-      </a> Designed by NextageCorp.</a>
-      </div>
-      <div class="socials">
-        <span>Redes Sociais: </span>
-        <a href="#">📘</a>
-        <a href="#">📸</a>
-        <a href="#">💼</a>
-        <a href="#">▶️</a>
-      </div>
+        <div class="payments">
+            <span>Formas de Pagamento: </span>
+            <img src="https://img.icons8.com/color/48/visa.png">
+            <img src="https://img.icons8.com/color/48/mastercard.png">
+            <img src="https://img.icons8.com/color/48/amex.png">
+            <img src="https://img.icons8.com/color/48/boleto-bankario.png">
+            <img src="https://img.icons8.com/color/48/pix.png">
+        </div>
+
+        <div class="copyright">
+            &copy; 2024 AutoPeças Maia. Todos os direitos reservados. Designed by NextageCorp.
+        </div>
+
+        <div class="socials">
+            <span>Redes Sociais: </span>
+            <a href="#">📘</a>
+            <a href="#">📸</a>
+            <a href="#">💼</a>
+            <a href="#">▶️</a>
+        </div>
     </div>
-  </footer>
+</footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
