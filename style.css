@@ -22,10 +22,8 @@ body {
 header {
     background-color: rgba(34, 34, 34, 0.95);
     color: white;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3); /* Reduzido de 4px/10px */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    position: relative; /* <- Troque sticky por relative */
 }
 
 .header-top {
@@ -1015,3 +1013,34 @@ footer {
         height: 250px;
     }
 }
+/* CORREÇÃO DO BOTÃO DE ACESSO DO ADMIN – MOBILE */
+@media (max-width: 768px) {
+
+    .header-right {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px !important;
+    }
+
+    #btnAddProduto {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+        padding: 10px 15px;
+        font-size: 1rem;
+        white-space: normal;
+    }
+
+    #openModal {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+
+    .cart-icon {
+        margin-top: 5px;
+    }
+}
+
