@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoPeças Maia</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="header-top">
+        <div class="logo-container">
+            <img src="imagens/logo - Editado.png" alt="Logo da AutoPeças Maia" class="logo">
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" class="search-input" placeholder="Buscar peças...">
+            <span class="search-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </span>
+        </div>
+
+        <div class="header-right">
+            <div><a href="admin.php" id="btnAddProduto" class="login-btn">acesso do administrador</a></div>
+            <button class="login-btn" id="openModal">Login/Cadastro</button>
+            <div class="cart-icon" id="cartIcon">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </div>
+        </div>
+    </div>
+
+    <nav class="header-bottom">
+        <ul>
+            <li>
+                <a href="#Motores"><i class="fas fa-cogs"></i> Motores</a>
+            </li>
+
+            <li>
+                <a href="#Pneus"><i class="fa-solid fa-life-ring"></i> Pneus</a>
+            </li>
+
+            <li>
+                <a href="#Autopeças"><i class="fas fa-car-battery"></i> Autopeças</a>
+            </li>
+
+            <li>
+                <a href="#AmortecedoreseSuspensões"><i class="fas fa-car-side"></i> Suspensão</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<!-- =======================================================
+     CARROSSEL PRINCIPAL
+======================================================= -->
+<div class="carrossel">
+    <div class="slides" id="slides">
+
+        <div class="slide" style="background-image: url('conheçaceara.png');"></div>
+        <div class="slide" style="background-image: url('quemsomos.png');"></div>
+        <div class="slide" style="background-image: url('qualidade.png');"></div>
+        <div class="slide" style="background-image: url('feedbacks.png');"></div>
+
+    </div>
+
+    <div class="navegacao" id="navegacao">
+        <div class="ativo"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+
+
+<!-- =======================================================
+     SEÇÕES DE PRODUTOS
+======================================================= -->
+
+<section id="produtosEmDestaque">
+    <div class="section-container">
+        <h2>Produtos em Destaque</h2>
+        <div class="product-list"></div>
+    </div>
+</section>
+
+<section id="Motores">
+    <div class="section-container">
+        <h2>Motores</h2>
+        <div class="product-list"></div>
+    </div>
+</section>
+
+<section id="Pneus">
+    <div class="section-container">
+        <h2>Pneus</h2>
+        <div class="product-list"></div>
+    </div>
+</section>
+
+<section id="Autopeças">
+    <div class="section-container">
+        <h2>Autopeças</h2>
+        <div class="product-list"></div>
+    </div>
+</section>
+
+<section id="AmortecedoreseSuspensões">
+    <div class="section-container">
+        <h2>Amortecedores e Suspensões</h2>
+        <div class="product-list"></div>
+    </div>
+</section>
+
+
+
+<!-- =======================================================
+     MODAIS DO SITE
+======================================================= -->
+
+<!-- LOGIN -->
+<div class="modal" id="loginModal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeModal">&times;</span>
+
+        <div class="modal-tabs">
+            <button class="tab-btn active" data-tab="login">Login</button>
+            <button class="tab-btn" data-tab="cadastro">Cadastro</button>
+        </div>
+
+        <div class="tab-content active" id="login">
+            <form>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Senha" required>
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+
+        <div class="tab-content" id="cadastro">
+            <form>
+                <input type="text" placeholder="Nome" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Senha" required>
+                <input type="tel" placeholder="Telefone" required>
+                <input type="text" name="cpf" placeholder="Digite seu CPF" maxlength="14"
+                    pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato: 000.000.000-00" required>
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- CARRINHO -->
+<div class="modal" id="cartModal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="fecharModal('cartModal')">&times;</span>
+        <h2>Seu Carrinho</h2>
+        <ul id="cartItems"></ul>
+        <p id="cartTotal">Total: R$ 0,00</p>
+        <div class="cart-actions">
+            <button onclick="limparCarrinho()">Limpar Carrinho</button>
+            <button onclick="prosseguirCompra()">Prosseguir para Compra</button>
+        </div>
+    </div>
+</div>
+
+<!-- DETALHES -->
+<div class="modal" id="productDetailsModal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="fecharModal('productDetailsModal')">&times;</span>
+
+        <img id="detailImg" class="product-detail-img" src="" alt="Imagem do Produto">
+        <h3 id="detailTitle"></h3>
+        <p id="detailDesc"></p>
+        <span id="detailPrice" class="price"></span>
+
+        <div class="specs">
+            <h4>Especificações</h4>
+            <ul id="detailSpecs"></ul>
+        </div>
+
+        <button onclick="comprarDoModal()">Adicionar ao Carrinho</button>
+    </div>
+</div>
+
+
+
+<div id="toast" class="toast"></div>
+
+
+
+<!-- =======================================================
+     MAPA GOOGLE + WHATSAPP
+======================================================= -->
+<div class="maps-container">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3896.6445183571113!2d-38.7544878248521!3d-12.406714548707217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7142dea9c9bd88b%3A0xa225588452fda744!2zQ2VhcsOhIEF1dG8gcGXDp2Fz!5e0!3m2!1spt-BR!2sbr!4v1758484177362!5m2!1spt-BR!2sbr"
+        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+<link rel="stylesheet" href="components/googlemaps.css">
+
+<div class="whatsapp-float" id="whatsappBtn" title="Fale conosco no WhatsApp">
+    <a href="https://api.whatsapp.com/send?phone=5575983579088" target="_blank"
+        style="display:flex;align-items:center;justify-content:center;">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp"
+            style="width:48px;height:48px;">
+    </a>
+</div>
+
+<div class="whatsapp-qr-container" id="whatsappQr" style="display:none;">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://api.whatsapp.com/send?phone=5575983579088"
+        alt="QR Code WhatsApp" class="whatsapp-qr">
+    <span class="whatsapp-qr-label">Escaneie e fale conosco!</span>
+</div>
+
+<link rel="stylesheet" href="components/whatsapp.css">
+<script src="components/whatsapp.js"></script>
+
+
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+<footer>
+    <div class="footer-container">
+
+        <div class="footer-col">
+            <h3>Sobre a Loja</h3>
+            <ul>
+                <li><a href="#">Quem Somos</a></li>
+                <li><a href="#">Soluções de Tecnologia</a></li>
+                <li><a href="#">Trabalhe Conosco</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Privacidade</h3>
+            <ul>
+                <li><a href="#">Política de Privacidade</a></li>
+                <li><a href="#">Política de Entrega</a></li>
+                <li><a href="#">Trocas e Devoluções</a></li>
+                <li><a href="#">Termos de Uso</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Ajuda</h3>
+            <ul>
+                <li><a href="#">Fale Conosco</a></li>
+                <li><a href="#">Minha Conta</a></li>
+                <li><a href="#">Acompanhe seu Pedido</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>SAC</h3>
+            <p>WhatsApp: (11) 94490-9162</p>
+            <p>Telefone: (11) 94490-9162</p>
+            <p>Email: <a href="mailto:atendimento@exemplo.com">atendimento@exemplo.com</a></p>
+            <p>Segunda a Sexta das 09h às 18h</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="payments">
+            <span>Formas de Pagamento: </span>
+            <img src="https://img.icons8.com/color/48/visa.png">
+            <img src="https://img.icons8.com/color/48/mastercard.png">
+            <img src="https://img.icons8.com/color/48/amex.png">
+            <img src="https://img.icons8.com/color/48/boleto-bankario.png">
+            <img src="https://img.icons8.com/color/48/pix.png">
+        </div>
+
+        <div class="copyright">
+            &copy; 2024 AutoPeças Maia. Todos os direitos reservados. Designed by NextageCorp.
+        </div>
+
+        <div class="socials">
+            <span>Redes Sociais: </span>
+            <a href="#">📘</a>
+            <a href="#">📸</a>
+            <a href="#">💼</a>
+            <a href="#">▶️</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Carregar produtos do banco de dados via PHP
+async function carregarProdutosDoBanco() {
+    try {
+        const response = await fetch('api_produtos.php?acao=listar');
+        const result = await response.json();
+
+        if (result.success && result.produtos) {
+            return result.produtos;
+        }
+        return [];
+    } catch (error) {
+        console.error("Erro ao carregar produtos:", error);
+        return [];
+    }
+}
+
+// Atualizar o script.js para usar produtos do banco
+document.addEventListener("DOMContentLoaded", async () => {
+    
+    // Carregar produtos do banco
+    const produtosDoBanco = await carregarProdutosDoBanco();
+    
+    // Substituir a linha que carregava do localStorage
+    // Por produtos carregados do banco de dados
+    window.produtosSalvos = produtosDoBanco;
+    
+    // O restante do código permanece igual
+    // O script.js existente cuidará da renderização
+});
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
