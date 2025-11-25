@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
             descricao: "Motor de baixa quilometragem, compatível com veículos populares 2010-2015.",
             categoria: "motores",
             detalhes: "Potência de 80cv. Torque de 10.2 kgfm. Inclui chicote e módulo de injeção. Garantia de 6 meses.",
-            imagens: ["./imagens/motor_1.jpg", "./imagens/motor_2.jpg"] // Use caminhos reais!
+            imagens: ["./imagens/motor_1.png", "./imagens/motor_2.png"] // Use caminhos reais!
         },
         {
             nome: "Pneu Aro 15 Esportivo (Kit)",
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
             descricao: "Pneu de alta performance, ideal para uso urbano e estradas molhadas. Kit com 4 unidades.",
             categoria: "pneus",
             detalhes: "Medida: 195/55 R15. Índice de carga: 85V. Banda de rodagem otimizada para durabilidade e aderência. Design moderno.",
-            imagens: ["./imagens/pneu_esportivo.jpg"]
+            imagens: ["./imagens/pneu2.png", "./imagens/pneu.png.png"]
         },
         {
             nome: "Pastilhas de Freio Cerâmicas",
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
             descricao: "Jogo completo de pastilhas dianteiras. Tecnologia cerâmica para maior durabilidade e menor ruído.",
             categoria: "autopecas",
             detalhes: "Material: Cerâmica de alta resistência. Compatível com modelos VW Gol G5/G6. Redução de 30% na poeira de frenagem. Produto homologado pelo INMETRO.",
-            imagens: ["./imagens/pastilha_freio.jpg", "./imagens/pastilha_freio_caixa.jpg"]
+            imagens: ["./imagens/pastilha_freio.png", "./imagens/pastilha_freio_caixa.png"]
         },
         {
             nome: "Amortecedor Dianteiro Monotubo",
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
             descricao: "Unidade de amortecedor para suspensão dianteira. Melhora a estabilidade e o conforto na direção.",
             categoria: "suspensao",
             detalhes: "Tipo: Monotubo pressurizado. Aplicação: Chevrolet Onix 2013-2019. Maior resistência a impactos e vazamentos. Venda por unidade.",
-            imagens: ["./imagens/amortecedor.jpg"]
+            imagens: ["./imagens/Amortecedor Cofap2.png", "./imagens/Amortecedor Cofap.png"]
         },
         {
             nome: "Kit de Filtros Essenciais",
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
             descricao: "Filtro de óleo, ar e combustível. Manutenção preventiva essencial.",
             categoria: "autopecas",
             detalhes: "Inclui 3 filtros. Compatível com motor 1.4 Fire. Recomenda-se troca a cada 10.000 km. Produto de marca original.",
-            imagens: ["./imagens/kit_filtros.jpg"]
+            imagens: ["./imagens/kit_filtros.png", "/imagens/kit_filtros_essenciais.png"]
         },
         {
             nome: "Pneu Radial para Carga (Unidade)",
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
             descricao: "Pneu robusto e durável, ideal para veículos de carga leve e uso comercial.",
             categoria: "pneus",
             detalhes: "Medida: 205/70 R16. Capacidade de carga reforçada. Desenho de banda de rodagem para maior tração. Excelente custo-benefício.",
-            imagens: ["./imagens/pneu_carga.jpg"]
+            imagens: ["./imagens/pneu_carga.png", "./imagens/pneu_carga2.png"]
         },
         {
             nome: "Bloco de Motor V6 Completo",
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
             descricao: "Bloco de motor seminovo, completo e pronto para instalação em pick-ups.",
             categoria: "motores",
             detalhes: "Motor 3.0 V6 Turbo Diesel. Acompanha cabeçotes e cárter. Testado e certificado. Quilometragem aferida. Ideal para reposição de alto desempenho.",
-            imagens: ["./imagens/motor_v6.jpg"]
+            imagens: ["./imagens/motor_v6.png"]
         }
     ];
 
