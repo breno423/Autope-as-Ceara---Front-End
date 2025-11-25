@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Abas login/cadastro
     const tabBtns = document.querySelectorAll(".tab-btn");
     const tabContents = document.querySelectorAll(".tab-content");
 
@@ -55,8 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             const emailInput = loginForm.querySelector("input[type='email']");
             if (emailInput && emailInput.value) {
-                const nome = emailInput.value.split("@")[0];
-                mostrarSaudacao(nome);
+                mostrarSaudacao(emailInput.value.split("@")[0]);
                 loginModal.style.display = "none";
             }
         });
@@ -67,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ============================================================
-       BARRA DE BUSCA
+       BUSCA
     ============================================================ */
     const searchInput = document.getElementById("searchInput");
     if (searchInput) {
@@ -101,7 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Função global usada no HTML estático
     window.comprar = function (productName, price, imgSrc, details) {
         cart.push({
             name: productName,
@@ -172,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     /* ============================================================
-       MODAL DE DETALHES
+       DETALHES
     ============================================================ */
     let currentProduct = null;
 
@@ -185,13 +182,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const detailDesc = document.getElementById("detailDesc");
         const detailPrice = document.getElementById("detailPrice");
         const specsList = document.getElementById("detailSpecs");
-        if (!detailModal || !detailImg || !detailTitle || !detailDesc || !detailPrice || !specsList) return;
 
         const title = productElement.querySelector("h3")?.textContent || "";
         const desc = productElement.querySelector("p")?.textContent || "";
         const priceText = productElement.querySelector("span")?.textContent || "R$ 0,00";
         const price = parseFloat(priceText.replace("R$ ", "").replace(".", "").replace(",", ".")) || 0;
-
         const details = productElement.dataset.details || "Detalhes adicionais não disponíveis.";
 
         const imgs = productElement.querySelectorAll(".product-img img");
@@ -211,7 +206,6 @@ document.addEventListener("DOMContentLoaded", () => {
         detailPrice.textContent = `R$ ${price.toFixed(2)}`;
         detailImg.src = currentProduct.imgSrc;
 
-        // clica na imagem para avançar
         if (imagens.length > 1) {
             let idx = 0;
             detailImg.onclick = () => {
@@ -244,7 +238,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const detailDesc = document.getElementById("detailDesc");
         const detailPrice = document.getElementById("detailPrice");
         const specsList = document.getElementById("detailSpecs");
-        if (!detailModal || !detailImg || !detailTitle || !detailDesc || !detailPrice || !specsList) return;
 
         currentProduct = {
             title: item.name,
@@ -259,7 +252,6 @@ document.addEventListener("DOMContentLoaded", () => {
         detailDesc.textContent = currentProduct.desc;
         detailPrice.textContent = `R$ ${currentProduct.price.toFixed(2)}`;
         detailImg.src = currentProduct.imgSrc;
-        detailImg.onclick = null;
 
         specsList.innerHTML = "";
         currentProduct.details.split(". ").forEach(spec => {
@@ -295,9 +287,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ============================================================
-       CARREGAR PRODUTOS DO ADMIN NAS CATEGORIAS CERTAS
+       CORREÇÃO PRINCIPAL
+       AGORA OS PRODUTOS VÊM DO BANCO DE DADOS!
     ============================================================ */
-    const produtosSalvos = JSON.parse(localStorage.getItem("produtos")) || [];
+
+    let produtosSalvos = window.produtosSalvos || [];
+
+    if (!Array.isArray(produtosSalvos)) produtosSalvos = [];
+
+    console.log("Produtos carregados do banco:", produtosSalvos);
+
+    /* ============================================================
+       LISTAS
+    ============================================================ */
 
     const listaDestaque   = document.querySelector("#produtosEmDestaque .product-list");
     const listaMotores    = document.querySelector("#Motores .product-list");
@@ -305,7 +307,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const listaAutopecas  = document.querySelector("#Autopeças .product-list");
     const listaSuspensao  = document.querySelector("#AmortecedoreseSuspensões .product-list");
 
-    function criarCardAdmin(prod) {
+    function criarCard(prod) {
         const item = document.createElement("div");
         item.classList.add("product-item");
         item.dataset.details = prod.detalhes || "";
@@ -321,9 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         item.innerHTML = `
             <h3>${prod.nome}</h3>
-            <div class="product-img">
-                ${imagensHTML}
-            </div>
+            <div class="product-img">${imagensHTML}</div>
             <p>${prod.descricao || ""}</p>
             <span>R$ ${precoNumber.toFixed(2)}</span>
             <div class="botao">
@@ -332,56 +332,46 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
-        // Botões do card novo
-        const btnComprar = item.querySelector(".btn-comprar");
-        const btnDetalhes = item.querySelector(".btn-detalhes");
+        item.querySelector(".btn-comprar").addEventListener("click", () => {
+            window.comprar(prod.nome, precoNumber, prod.imagens?.[0] || "", prod.detalhes);
+        });
 
-        if (btnComprar) {
-            btnComprar.addEventListener("click", () => {
-                window.comprar(prod.nome, precoNumber, (prod.imagens && prod.imagens[0]) || "", prod.detalhes || "");
-            });
-        }
-
-        if (btnDetalhes) {
-            btnDetalhes.addEventListener("click", () => {
-                window.mostrarDetalhes(item);
-            });
-        }
+        item.querySelector(".btn-detalhes").addEventListener("click", () => {
+            window.mostrarDetalhes(item);
+        });
 
         return item;
     }
 
-    if (produtosSalvos.length > 0) {
-        produtosSalvos.forEach(prod => {
-            const card = criarCardAdmin(prod);
+    produtosSalvos.forEach(prod => {
+        const card = criarCard(prod);
 
-            switch (prod.categoria) {
-                case "motores":
-                    if (listaMotores) listaMotores.appendChild(card);
-                    break;
-                case "pneus":
-                    if (listaPneus) listaPneus.appendChild(card);
-                    break;
-                case "autopecas":
-                    if (listaAutopecas) listaAutopecas.appendChild(card);
-                    break;
-                case "suspensao":
-                    if (listaSuspensao) listaSuspensao.appendChild(card);
-                    break;
-                default:
-                    if (listaDestaque) listaDestaque.appendChild(card);
-                    break;
-            }
-        });
-    }
+        switch (prod.categoria) {
+            case "motores":
+                listaMotores.appendChild(card);
+                break;
+            case "pneus":
+                listaPneus.appendChild(card);
+                break;
+            case "autopecas":
+                listaAutopecas.appendChild(card);
+                break;
+            case "suspensao":
+                listaSuspensao.appendChild(card);
+                break;
+            default:
+                listaDestaque.appendChild(card);
+                break;
+        }
+    });
 
     /* ============================================================
-       CARROSSEL DAS IMAGENS DOS CARDS
+       CARROSSEL DAS IMAGENS
     ============================================================ */
     document.querySelectorAll(".product-img").forEach(container => {
         const imgs = container.querySelectorAll("img");
         if (imgs.length <= 1) {
-            if (imgs[0]) imgs[0].classList.add("ativa");
+            imgs[0]?.classList.add("ativa");
             return;
         }
 
@@ -399,18 +389,18 @@ document.addEventListener("DOMContentLoaded", () => {
         container.appendChild(prev);
         container.appendChild(next);
 
-        function mudarImagem(dir) {
+        const mudarImagem = (dir) => {
             imgs[index].classList.remove("ativa");
             index = (index + dir + imgs.length) % imgs.length;
             imgs[index].classList.add("ativa");
-        }
+        };
 
         prev.onclick = () => mudarImagem(-1);
         next.onclick = () => mudarImagem(1);
     });
 
     /* ============================================================
-       CARROSSEL DO BANNER PRINCIPAL
+       CARROSSEL PRINCIPAL
     ============================================================ */
     const slides = document.getElementById("slides");
     const navDots = document.querySelectorAll("#navegacao div");
@@ -430,4 +420,5 @@ document.addEventListener("DOMContentLoaded", () => {
             mostrarSlide(indexSlide);
         }, 4000);
     }
+
 });
