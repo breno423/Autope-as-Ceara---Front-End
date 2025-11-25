@@ -1,7 +1,70 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     /* ============================================================
-       LOGIN / CADASTRO
+        CATÁLOGO DE PRODUTOS ESTÁTICO (Substitui o Banco de Dados)
+    ============================================================ */
+
+    const produtosDoCatalogo = [
+        {
+            nome: "Motor 1.0 Flex Original",
+            preco: 3500.00,
+            descricao: "Motor de baixa quilometragem, compatível com veículos populares 2010-2015.",
+            categoria: "motores",
+            detalhes: "Potência de 80cv. Torque de 10.2 kgfm. Inclui chicote e módulo de injeção. Garantia de 6 meses.",
+            imagens: ["./imagens/motor_1.jpg", "./imagens/motor_2.jpg"] // Use caminhos reais!
+        },
+        {
+            nome: "Pneu Aro 15 Esportivo (Kit)",
+            preco: 1250.90,
+            descricao: "Pneu de alta performance, ideal para uso urbano e estradas molhadas. Kit com 4 unidades.",
+            categoria: "pneus",
+            detalhes: "Medida: 195/55 R15. Índice de carga: 85V. Banda de rodagem otimizada para durabilidade e aderência. Design moderno.",
+            imagens: ["./imagens/pneu_esportivo.jpg"]
+        },
+        {
+            nome: "Pastilhas de Freio Cerâmicas",
+            preco: 180.50,
+            descricao: "Jogo completo de pastilhas dianteiras. Tecnologia cerâmica para maior durabilidade e menor ruído.",
+            categoria: "autopecas",
+            detalhes: "Material: Cerâmica de alta resistência. Compatível com modelos VW Gol G5/G6. Redução de 30% na poeira de frenagem. Produto homologado pelo INMETRO.",
+            imagens: ["./imagens/pastilha_freio.jpg", "./imagens/pastilha_freio_caixa.jpg"]
+        },
+        {
+            nome: "Amortecedor Dianteiro Monotubo",
+            preco: 450.00,
+            descricao: "Unidade de amortecedor para suspensão dianteira. Melhora a estabilidade e o conforto na direção.",
+            categoria: "suspensao",
+            detalhes: "Tipo: Monotubo pressurizado. Aplicação: Chevrolet Onix 2013-2019. Maior resistência a impactos e vazamentos. Venda por unidade.",
+            imagens: ["./imagens/amortecedor.jpg"]
+        },
+        {
+            nome: "Kit de Filtros Essenciais",
+            preco: 89.90,
+            descricao: "Filtro de óleo, ar e combustível. Manutenção preventiva essencial.",
+            categoria: "autopecas",
+            detalhes: "Inclui 3 filtros. Compatível com motor 1.4 Fire. Recomenda-se troca a cada 10.000 km. Produto de marca original.",
+            imagens: ["./imagens/kit_filtros.jpg"]
+        },
+        {
+            nome: "Pneu Radial para Carga (Unidade)",
+            preco: 599.99,
+            descricao: "Pneu robusto e durável, ideal para veículos de carga leve e uso comercial.",
+            categoria: "pneus",
+            detalhes: "Medida: 205/70 R16. Capacidade de carga reforçada. Desenho de banda de rodagem para maior tração. Excelente custo-benefício.",
+            imagens: ["./imagens/pneu_carga.jpg"]
+        },
+        {
+            nome: "Bloco de Motor V6 Completo",
+            preco: 9800.00,
+            descricao: "Bloco de motor seminovo, completo e pronto para instalação em pick-ups.",
+            categoria: "motores",
+            detalhes: "Motor 3.0 V6 Turbo Diesel. Acompanha cabeçotes e cárter. Testado e certificado. Quilometragem aferida. Ideal para reposição de alto desempenho.",
+            imagens: ["./imagens/motor_v6.jpg"]
+        }
+    ];
+
+    /* ============================================================
+        LOGIN / CADASTRO
     ============================================================ */
     const openModalBtn = document.getElementById("openModal");
     const loginModal = document.getElementById("loginModal");
@@ -65,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ============================================================
-       BUSCA
+        BUSCA
     ============================================================ */
     const searchInput = document.getElementById("searchInput");
     if (searchInput) {
@@ -81,13 +144,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ============================================================
-       CARRINHO
+        CARRINHO
     ============================================================ */
-    let cart = [];
+    // Tentativa de carregar o carrinho do LocalStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
     function updateCartCount() {
         const cartCount = document.getElementById("cart-count");
         if (cartCount) cartCount.textContent = cart.length;
+        localStorage.setItem('cart', JSON.stringify(cart)); // Salva no LocalStorage
     }
 
     function showToast(message) {
@@ -169,7 +234,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     /* ============================================================
-       DETALHES
+        DETALHES
     ============================================================ */
     let currentProduct = null;
 
@@ -287,18 +352,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ============================================================
-       CORREÇÃO PRINCIPAL
-       AGORA OS PRODUTOS VÊM DO BANCO DE DADOS!
+        CARREGAMENTO DE PRODUTOS
     ============================================================ */
 
-    let produtosSalvos = window.produtosSalvos || [];
+    // ATUALIZADO: A lista agora é o catálogo estático!
+    let produtosSalvos = produtosDoCatalogo; 
 
     if (!Array.isArray(produtosSalvos)) produtosSalvos = [];
 
-    console.log("Produtos carregados do banco:", produtosSalvos);
+    console.log("Produtos carregados do catálogo estático:", produtosSalvos);
 
     /* ============================================================
-       LISTAS
+        LISTAS
     ============================================================ */
 
     const listaDestaque   = document.querySelector("#produtosEmDestaque .product-list");
@@ -316,8 +381,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let imagensHTML = "";
         if (Array.isArray(prod.imagens)) {
+            // Garante que pelo menos a primeira imagem esteja lá, se houver
             prod.imagens.forEach((img, index) => {
-                imagensHTML += `<img src="${img}" class="${index === 0 ? "ativa" : ""}">`;
+                imagensHTML += `<img src="${img}" alt="${prod.nome}" class="${index === 0 ? "ativa" : ""}">`;
             });
         }
 
@@ -366,7 +432,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ============================================================
-       CARROSSEL DAS IMAGENS
+        CARROSSEL DAS IMAGENS
     ============================================================ */
     document.querySelectorAll(".product-img").forEach(container => {
         const imgs = container.querySelectorAll("img");
@@ -400,7 +466,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ============================================================
-       CARROSSEL PRINCIPAL
+        CARROSSEL PRINCIPAL
     ============================================================ */
     const slides = document.getElementById("slides");
     const navDots = document.querySelectorAll("#navegacao div");
